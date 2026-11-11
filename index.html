@@ -18,9 +18,16 @@
 .editorial-card .listing-type{margin:0;color:var(--gold);font-size:12px;font-weight:700}
 .editorial-card a{margin-top:auto;padding-top:8px;color:var(--gold);overflow-wrap:anywhere}
 @media(max-width:850px){.layout{height:calc(100dvh - 126px);min-height:530px}.site-nav button{padding:8px 9px}.editorial-controls{grid-template-columns:1fr}}
+
+.map-controls{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#map-toggle{white-space:nowrap}
+.layout.map-collapsed{grid-template-columns:minmax(0,1fr)}
+.map-collapsed aside{height:100%;border:0}
+.map-collapsed .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));align-content:start}
+@media(max-width:850px){.layout:not(.map-collapsed) aside{height:55%}.layout:not(.map-collapsed) .mapwrap{height:45%}}
 </style></head><body>
 <header><div><h1>ATL <span>AFTER DARK</span></h1><small>Your restaurant & nightlife field guide</small></div><div class="topright"><span class="count" id="total"></span><button id="export">Export favorites</button></div></header>
-<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="favorites" aria-pressed="false">★ Favorites</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><small id="matchcount"></small></div><div class="results" id="results"></div></aside><div class="mapwrap"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
+<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="favorites" aria-pressed="false">★ Favorites</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
 <main class="editorial" id="editorial" hidden>
   <div class="editorial-hero"><h2 id="editorial-title"></h2><p id="editorial-intro"></p></div>
   <div class="editorial-controls">
@@ -828,5 +835,13 @@ document.querySelectorAll(".site-nav button").forEach(button => {
 });
 ["search","category","neighborhood","status","sort"].forEach(id=>$(id).addEventListener("input",render));
 $("export").onclick=()=>{const names=places.filter(p=>favs.has(p.id)).map(p=>p.name+" — "+p.neighborhood).join("\n");const blob=new Blob([names||"No favorites yet"],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="atlanta-favorites.txt";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+$("map-toggle").addEventListener("click", () => {
+  const panel = $("map-panel");
+  panel.hidden = !panel.hidden;
+  $("directory").classList.toggle("map-collapsed", panel.hidden);
+  $("map-toggle").setAttribute("aria-expanded", String(!panel.hidden));
+  $("map-toggle").textContent = panel.hidden ? "Show map" : "Hide map";
+  if (panel.hidden) infoWindow?.close();
+});
 render(); loadMap();
 </script></body></html>
