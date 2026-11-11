@@ -31,7 +31,7 @@
   <div id="listing-groups"></div>
 </main>
 <script>
-const places=[{"id": 1, "name": "No. 246", "category": "Italian", "neighborhood": "Decatur", "lat": 33.77259, "lng": -84.29378, "status": "Saved", "note": ""}, {"id": 2, "name": "Sotto Sotto", "category": "Italian", "neighborhood": "Inman Park", "lat": 33.76552, "lng": -84.34943, "status": "Saved", "note": ""}, {"id": 3, "name": "La Grotta", "category": "Italian", "neighborhood": "Buckhead", "lat": 33.83647, "lng": -84.369, "status": "Saved", "note": ""}, {"id": 4, "name": "Bocca Lupo", "category": "Italian", "neighborhood": "Inman Park", "lat": 33.76084, "lng": -84.34941, "status": "Saved", "note": ""}, {"id": 5, "name": "St. Cecilia", "category": "Italian", "neighborhood": "Buckhead", "lat": 33.83946, "lng": -84.37915, "status": "Saved", "note": ""}, {"id": 6, "name": "Fum", "category": "Italian", "neighborhood": "West Midtown", "lat": 33.79284, "lng": -84.40629, "status": "Saved", "note": ""}, {"id": 7, "name": "La Tavola Trattoria", "category": "Italian", "neighborhood": "Virginia-Highland", "lat": 33.77634, "lng": -84.35083, "status": "Saved", "note": ""}, {"id": 8, "name": "Gigi’s Italian Kitchen", "category": "Italian", "neighborhood": "Candler Park", "lat": 33.76285, "lng": -84.33425, "status": "Saved", "note": ""}, {"id": 9, "name": "The White Bull", "category": "Italian", "neighborhood": "Decatur", "lat": 33.77166, "lng": -84.29956, "status": "Saved", "note": ""}, {"id": 10, "name": "Capolinea", "category": "Italian", "neighborhood": "Downtown", "lat": 33.74849, "lng": -84.39219, "status": "Saved", "note": ""}, {"id": 11, "name": "Campagnolo", "category": "Italian", "neighborhood": "Midtown", "lat": 33.78169, "lng": -84.38513, "status": "Saved", "note": ""}, {"id": 12, "name": "Pricci", "category": "Italian", "neighborhood": "Buckhead", "lat": 33.8449, "lng": -84.36926, "status": "Saved", "note": ""}, {"id": 13, "name": "Forza Storico", "category": "Italian", "neighborhood": "West Midtown", "lat": 33.78886, "lng": -84.41249, "status": "Saved", "note": ""}, {"id": 14, "name": "Valenza", "category": "Italian", "neighborhood": "Brookhaven", "lat": 33.86309, "lng": -84.3322, "status": "Saved", "note": ""}, {"id": 15, "name": "Yeppa & Co (Buckhead)", "category": "Italian", "neighborhood": "Buckhead", "lat": 33.8425, "lng": -84.37689, "status": "Saved", "note": ""}, {"id": 16, "name": "Yeppa & Co (Beltline)", "category": "Italian", "neighborhood": "Old Fourth Ward", "lat": 33.76981, "lng": -84.36754, "status": "Saved", "note": ""}, {"id": 17, "name": "Il Giallo", "category": "Italian", "neighborhood": "Sandy Springs", "lat": 33.93365, "lng": -84.36966, "status": "Saved", "note": ""}, {"id": 18, "name": "Tre Vele", "category": "Italian", "neighborhood": "Sandy Springs", "lat": 33.93124, "lng": -84.37313, "status": "Saved", "note": ""}, {"id": 19, "name": "Rosso Italian", "category": "Italian", "neighborhood": "Midtown", "lat": 33.78222, "lng": -84.38408, "status": "Saved", "note": ""}, {"id": 20, "name": "Lyla Lila", "category": "Italian", "neighborhood": "Midtown", "lat": 33.78222, "lng": -84.38858, "status": "Saved", "note": ""}, {"id": 21, "name": "Gio’s", "category": "Italian", "neighborhood": "West Midtown", "lat": 33.79218, "lng": -84.40692, "status": "Saved", "note": ""}, {"id": 22, "name": "Fiorenza Italian", "category": "Italian", "neighborhood": "Alpharetta", "lat": 34.07358, "lng": -84.29905, "status": "Saved", "note": ""}, {"id": 23, "name": "Il Premio", "category": "Italian", "neighborhood": "Old Fourth Ward", "lat": 33.76256, "lng": -84.3632, "status": "Saved", "note": ""}, {"id": 24, "name": "Indaco", "category": "Italian", "neighborhood": "Old Fourth Ward", "lat": 33.767, "lng": -84.35828, "status": "Saved", "note": ""}, {"id": 25, "name": "Osteria 832", "category": "Italian", "neighborhood": "Virginia-Highland", "lat": 33.77887, "lng": -84.35766, "status": "Saved", "note": ""}, {"id": 26, "name": "Luga", "category": "Italian", "neighborhood": "Decatur", "lat": 33.77364, "lng": -84.30096, "status": "Saved", "note": ""}, {"id": 27, "name": "Lagarde American Eatery", "category": "Steakhouse", "neighborhood": "Chamblee", "lat": 33.88553, "lng": -84.30027, "status": "Saved", "note": ""}, {"id": 28, "name": "Chops Lobster Bar", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.84228, "lng": -84.37971, "status": "Saved", "note": ""}, {"id": 29, "name": "Bones", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.83796, "lng": -84.37314, "status": "Saved", "note": ""}, {"id": 30, "name": "Clark’s Steakhouse", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.84291, "lng": -84.37731, "status": "Saved", "note": ""}, {"id": 31, "name": "Hal’s The Steakhouse", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.84503, "lng": -84.37895, "status": "Saved", "note": ""}, {"id": 32, "name": "Luella", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.84023, "lng": -84.37685, "status": "Saved", "note": ""}, {"id": 33, "name": "New York Prime", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.83949, "lng": -84.37709, "status": "Saved", "note": ""}, {"id": 34, "name": "Little Alley (Buckhead)", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.84058, "lng": -84.36911, "status": "Saved", "note": ""}, {"id": 35, "name": "Little Alley (Roswell)", "category": "Steakhouse", "neighborhood": "Roswell", "lat": 34.02384, "lng": -84.35761, "status": "Saved", "note": ""}, {"id": 36, "name": "Highland Tap", "category": "Steakhouse", "neighborhood": "Virginia-Highland", "lat": 33.78289, "lng": -84.35576, "status": "Saved", "note": ""}, {"id": 37, "name": "Kevin Rathbun Steak", "category": "Steakhouse", "neighborhood": "Old Fourth Ward", "lat": 33.76977, "lng": -84.35792, "status": "Saved", "note": ""}, {"id": 38, "name": "Marcel", "category": "Steakhouse", "neighborhood": "West Midtown", "lat": 33.78684, "lng": -84.40842, "status": "Saved", "note": ""}, {"id": 39, "name": "Arnette’s Chop Shop", "category": "Steakhouse", "neighborhood": "Brookhaven", "lat": 33.86118, "lng": -84.34216, "status": "Saved", "note": ""}, {"id": 40, "name": "Mastro’s Steakhouse", "category": "Steakhouse", "neighborhood": "Downtown", "lat": 33.75335, "lng": -84.38976, "status": "Saved", "note": ""}, {"id": 41, "name": "Fleming’s Steakhouse", "category": "Steakhouse", "neighborhood": "Midtown", "lat": 33.78772, "lng": -84.38663, "status": "Saved", "note": ""}, {"id": 42, "name": "Enzo Italian Steakhouse", "category": "Steakhouse", "neighborhood": "Midtown", "lat": 33.78332, "lng": -84.38577, "status": "Upcoming", "note": ""}, {"id": 43, "name": "KR SteakBar", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.84269, "lng": -84.37678, "status": "Saved", "note": ""}, {"id": 44, "name": "H&W Steakhouse", "category": "Steakhouse", "neighborhood": "Peachtree Corners", "lat": 33.96795, "lng": -84.22532, "status": "Saved", "note": ""}, {"id": 45, "name": "Koshu Club", "category": "Steakhouse", "neighborhood": "Buckhead", "lat": 33.83611, "lng": -84.37087, "status": "Saved", "note": ""}, {"id": 46, "name": "Fox Bros BBQ", "category": "BBQ", "neighborhood": "Candler Park", "lat": 33.76479, "lng": -84.3341, "status": "Saved", "note": ""}, {"id": 47, "name": "Gene’s", "category": "BBQ", "neighborhood": "East Lake", "lat": 33.76045, "lng": -84.31264, "status": "Saved", "note": ""}, {"id": 48, "name": "Heirloom", "category": "BBQ", "neighborhood": "Vinings", "lat": 33.87078, "lng": -84.47076, "status": "Saved", "note": ""}, {"id": 49, "name": "Broad Street BBQ", "category": "BBQ", "neighborhood": "Downtown", "lat": 33.74947, "lng": -84.39515, "status": "Saved", "note": ""}, {"id": 50, "name": "Brainwave", "category": "Pizza", "neighborhood": "Decatur", "lat": 33.77927, "lng": -84.29599, "status": "Saved", "note": ""}, {"id": 51, "name": "Bertolozi’s", "category": "Pizza", "neighborhood": "Buckhead", "lat": 33.84398, "lng": -84.37892, "status": "Saved", "note": ""}, {"id": 52, "name": "Solar Slice", "category": "Pizza", "neighborhood": "Marietta", "lat": 33.94915, "lng": -84.55173, "status": "Saved", "note": ""}, {"id": 53, "name": "Baby Blue", "category": "Pizza", "neighborhood": "Chamblee", "lat": 33.88556, "lng": -84.29794, "status": "Saved", "note": ""}, {"id": 54, "name": "Krog Bar", "category": "Pizza", "neighborhood": "Buckhead", "lat": 33.84413, "lng": -84.37621, "status": "Saved", "note": ""}, {"id": 55, "name": "Mister O1 (Buckhead)", "category": "Pizza", "neighborhood": "Buckhead", "lat": 33.83682, "lng": -84.36989, "status": "Saved", "note": ""}, {"id": 56, "name": "Mister O1 (Sandy Springs)", "category": "Pizza", "neighborhood": "Sandy Springs", "lat": 33.92976, "lng": -84.37365, "status": "Saved", "note": ""}, {"id": 57, "name": "Glide Pizza", "category": "Pizza", "neighborhood": "Old Fourth Ward", "lat": 33.76713, "lng": -84.36827, "status": "Saved", "note": ""}, {"id": 58, "name": "Spina Pizza", "category": "Pizza", "neighborhood": "Reynoldstown", "lat": 33.7463, "lng": -84.34757, "status": "Saved", "note": ""}, {"id": 59, "name": "Lloyd’s Pizza & Bar", "category": "Pizza", "neighborhood": "Inman Park", "lat": 33.75807, "lng": -84.35208, "status": "Saved", "note": ""}, {"id": 60, "name": "Oku", "category": "Sushi / Japanese", "neighborhood": "West Midtown", "lat": 33.78713, "lng": -84.4089, "status": "Saved", "note": ""}, {"id": 61, "name": "Fudo", "category": "Sushi / Japanese", "neighborhood": "Chamblee", "lat": 33.89178, "lng": -84.30158, "status": "Saved", "note": ""}, {"id": 62, "name": "Sozou", "category": "Sushi / Japanese", "neighborhood": "Midtown", "lat": 33.77887, "lng": -84.38753, "status": "Saved", "note": ""}, {"id": 63, "name": "UMI", "category": "Sushi / Japanese", "neighborhood": "Buckhead", "lat": 33.83845, "lng": -84.38033, "status": "Saved", "note": ""}, {"id": 64, "name": "Nobu Atlanta", "category": "Sushi / Japanese", "neighborhood": "Buckhead", "lat": 33.8378, "lng": -84.37837, "status": "Saved", "note": ""}, {"id": 65, "name": "Tomo Japanese", "category": "Sushi / Japanese", "neighborhood": "Buckhead", "lat": 33.83847, "lng": -84.36949, "status": "Saved", "note": ""}, {"id": 66, "name": "Kinjo Room", "category": "Sushi / Japanese", "neighborhood": "West Midtown", "lat": 33.78524, "lng": -84.41499, "status": "Saved", "note": ""}, {"id": 67, "name": "MF Sushi", "category": "Sushi / Japanese", "neighborhood": "Inman Park", "lat": 33.76534, "lng": -84.3563, "status": "Saved", "note": ""}, {"id": 68, "name": "Brush Sushi", "category": "Sushi / Japanese", "neighborhood": "Buckhead", "lat": 33.84029, "lng": -84.3716, "status": "Saved", "note": ""}, {"id": 69, "name": "JuNi", "category": "Sushi / Japanese", "neighborhood": "Midtown", "lat": 33.78561, "lng": -84.3842, "status": "Saved", "note": ""}, {"id": 70, "name": "Nori Yu Handroll Bar", "category": "Sushi / Japanese", "neighborhood": "Decatur", "lat": 33.77049, "lng": -84.30084, "status": "Upcoming", "note": ""}, {"id": 71, "name": "Smiley’s Burger Club", "category": "Burgers", "neighborhood": "Decatur", "lat": 33.77195, "lng": -84.29592, "status": "Saved", "note": ""}, {"id": 72, "name": "Small Fry", "category": "Burgers", "neighborhood": "Reynoldstown", "lat": 33.75165, "lng": -84.34701, "status": "Saved", "note": ""}, {"id": 73, "name": "Four Seasons Burger", "category": "Burgers", "neighborhood": "Midtown", "lat": 33.78208, "lng": -84.3873, "status": "Saved", "note": ""}, {"id": 74, "name": "NFA Burger", "category": "Burgers", "neighborhood": "Dunwoody", "lat": 33.94667, "lng": -84.33941, "status": "Saved", "note": ""}, {"id": 75, "name": "Holeman and Finch", "category": "Burgers", "neighborhood": "Buckhead", "lat": 33.83686, "lng": -84.37025, "status": "Saved", "note": ""}, {"id": 76, "name": "New Realm", "category": "Burgers", "neighborhood": "Old Fourth Ward", "lat": 33.76689, "lng": -84.36011, "status": "Saved", "note": ""}, {"id": 77, "name": "Mister Burger", "category": "Burgers", "neighborhood": "Buckhead", "lat": 33.84261, "lng": -84.36921, "status": "Saved", "note": ""}, {"id": 78, "name": "Evergreen Butcher + Baker", "category": "Burgers", "neighborhood": "Kirkwood", "lat": 33.75256, "lng": -84.32425, "status": "Saved", "note": ""}, {"id": 79, "name": "Jack Brown’s", "category": "Burgers", "neighborhood": "Virginia-Highland", "lat": 33.77979, "lng": -84.35069, "status": "Saved", "note": ""}, {"id": 80, "name": "BeetleCat", "category": "Seafood", "neighborhood": "Inman Park", "lat": 33.76515, "lng": -84.35416, "status": "Saved", "note": ""}, {"id": 81, "name": "Siren ATL", "category": "Seafood", "neighborhood": "Brookhaven", "lat": 33.85594, "lng": -84.33729, "status": "Saved", "note": ""}, {"id": 82, "name": "Breaker Breaker", "category": "Seafood", "neighborhood": "Reynoldstown", "lat": 33.74852, "lng": -84.34263, "status": "Saved", "note": ""}, {"id": 83, "name": "PALA Bakery", "category": "Sandwiches / Bakery", "neighborhood": "Buckhead", "lat": 33.84197, "lng": -84.3788, "status": "Saved", "note": ""}, {"id": 84, "name": "Henri’s Bakery", "category": "Sandwiches / Bakery", "neighborhood": "Buckhead", "lat": 33.8386, "lng": -84.37401, "status": "Saved", "note": ""}, {"id": 85, "name": "Sammy’s", "category": "Sandwiches / Bakery", "neighborhood": "Southwest Beltline", "lat": 33.72838, "lng": -84.41467, "status": "Saved", "note": ""}, {"id": 86, "name": "SamWitch", "category": "Sandwiches / Bakery", "neighborhood": "Pop-up / rotating", "lat": 33.77151, "lng": -84.37655, "status": "Saved", "note": ""}, {"id": 87, "name": "Eggslut", "category": "Sandwiches / Bakery", "neighborhood": "Old Fourth Ward", "lat": 33.76556, "lng": -84.35951, "status": "Upcoming", "note": ""}, {"id": 88, "name": "Little Tart Bakeshop", "category": "Sandwiches / Bakery", "neighborhood": "Grant Park", "lat": 33.73364, "lng": -84.36568, "status": "Saved", "note": ""}, {"id": 89, "name": "Midi ATL", "category": "Sandwiches / Bakery", "neighborhood": "Candler Park", "lat": 33.76746, "lng": -84.34229, "status": "Saved", "note": ""}, {"id": 90, "name": "Kinship Butcher", "category": "Sandwiches / Bakery", "neighborhood": "Virginia-Highland", "lat": 33.78048, "lng": -84.34749, "status": "Saved", "note": ""}, {"id": 91, "name": "Brooklyn Bagel", "category": "Sandwiches / Bakery", "neighborhood": "Midtown", "lat": 33.78154, "lng": -84.38779, "status": "Saved", "note": ""}, {"id": 92, "name": "Sugar Loaf", "category": "Sandwiches / Bakery", "neighborhood": "Reynoldstown", "lat": 33.74687, "lng": -84.35255, "status": "Saved", "note": ""}, {"id": 93, "name": "Emerald City Bagels", "category": "Sandwiches / Bakery", "neighborhood": "East Atlanta Village", "lat": 33.74278, "lng": -84.34319, "status": "Saved", "note": ""}, {"id": 94, "name": "Necessary Purveyor", "category": "Sandwiches / Bakery", "neighborhood": "Old Fourth Ward", "lat": 33.76197, "lng": -84.36656, "status": "Saved", "note": ""}, {"id": 95, "name": "Hero Boy (Buckhead)", "category": "Sandwiches / Bakery", "neighborhood": "Buckhead", "lat": 33.83964, "lng": -84.38002, "status": "Upcoming", "note": ""}, {"id": 96, "name": "Superica", "category": "Latin / Mexican", "neighborhood": "Inman Park", "lat": 33.76077, "lng": -84.34749, "status": "Saved", "note": ""}, {"id": 97, "name": "La Cueva", "category": "Latin / Mexican", "neighborhood": "Poncey-Highland", "lat": 33.77477, "lng": -84.35208, "status": "Saved", "note": ""}, {"id": 98, "name": "Vice Taco Truck", "category": "Latin / Mexican", "neighborhood": "Pop-up / rotating", "lat": 33.76784, "lng": -84.37949, "status": "Saved", "note": ""}, {"id": 99, "name": "El Malo", "category": "Latin / Mexican", "neighborhood": "Reynoldstown", "lat": 33.74958, "lng": -84.34944, "status": "Saved", "note": ""}, {"id": 100, "name": "Botanico Cocina", "category": "Latin / Mexican", "neighborhood": "Midtown", "lat": 33.77937, "lng": -84.38869, "status": "Saved", "note": ""}, {"id": 101, "name": "Casi Cielo", "category": "Latin / Mexican", "neighborhood": "Old Fourth Ward", "lat": 33.76182, "lng": -84.36146, "status": "Saved", "note": ""}, {"id": 102, "name": "El Valle", "category": "Latin / Mexican", "neighborhood": "Brookhaven", "lat": 33.86293, "lng": -84.33338, "status": "Saved", "note": ""}, {"id": 103, "name": "Taqueria Lobito", "category": "Latin / Mexican", "neighborhood": "Midtown", "lat": 33.78522, "lng": -84.38426, "status": "Saved", "note": ""}, {"id": 104, "name": "May Peel", "category": "Bars / Lounges", "neighborhood": "Midtown", "lat": 33.78651, "lng": -84.38109, "status": "Saved", "note": ""}, {"id": 105, "name": "Celestia", "category": "Bars / Lounges", "neighborhood": "Midtown", "lat": 33.78755, "lng": -84.38355, "status": "Saved", "note": ""}, {"id": 106, "name": "Y Bar", "category": "Bars / Lounges", "neighborhood": "Buckhead", "lat": 33.84123, "lng": -84.37877, "status": "Saved", "note": ""}, {"id": 107, "name": "Lucian Books & Wine", "category": "Bars / Lounges", "neighborhood": "Buckhead", "lat": 33.83726, "lng": -84.37711, "status": "Saved", "note": ""}, {"id": 108, "name": "Sargent Atlanta", "category": "Bars / Lounges", "neighborhood": "Old Fourth Ward", "lat": 33.76319, "lng": -84.36087, "status": "Saved", "note": ""}, {"id": 109, "name": "Read the Room", "category": "Bars / Lounges", "neighborhood": "Old Fourth Ward", "lat": 33.76897, "lng": -84.36166, "status": "Saved", "note": ""}, {"id": 110, "name": "Close Company", "category": "Bars / Lounges", "neighborhood": "Old Fourth Ward", "lat": 33.76397, "lng": -84.36729, "status": "Saved", "note": ""}, {"id": 111, "name": "Rabbit Ears", "category": "Bars / Lounges", "neighborhood": "West Midtown", "lat": 33.78741, "lng": -84.41091, "status": "Upcoming", "note": ""}, {"id": 112, "name": "Bar Schmutzi", "category": "Bars / Lounges", "neighborhood": "East Atlanta Village", "lat": 33.74181, "lng": -84.33855, "status": "Upcoming", "note": ""}, {"id": 113, "name": "SAGRA", "category": "Bars / Lounges", "neighborhood": "East Atlanta Village", "lat": 33.74252, "lng": -84.34005, "status": "Saved", "note": ""}, {"id": 114, "name": "Banshee", "category": "Bars / Lounges", "neighborhood": "East Atlanta Village", "lat": 33.74275, "lng": -84.34755, "status": "Saved", "note": ""}, {"id": 115, "name": "Irish Exit", "category": "Bars / Lounges", "neighborhood": "Downtown", "lat": 33.75003, "lng": -84.39061, "status": "Saved", "note": ""}, {"id": 116, "name": "Bar ANA", "category": "Bars / Lounges", "neighborhood": "Poncey-Highland", "lat": 33.77773, "lng": -84.35004, "status": "Saved", "note": ""}, {"id": 117, "name": "Madeira Park", "category": "Bars / Lounges", "neighborhood": "Poncey-Highland", "lat": 33.77542, "lng": -84.34443, "status": "Saved", "note": ""}, {"id": 118, "name": "Omma", "category": "Bars / Lounges", "neighborhood": "West Midtown", "lat": 33.78469, "lng": -84.4167, "status": "Upcoming", "note": ""}, {"id": 119, "name": "MidCity", "category": "Bars / Lounges", "neighborhood": "Midtown", "lat": 33.78407, "lng": -84.38733, "status": "Saved", "note": ""}, {"id": 120, "name": "Bar Pilar", "category": "Bars / Lounges", "neighborhood": "Midtown", "lat": 33.78306, "lng": -84.37785, "status": "Saved", "note": ""}, {"id": 121, "name": "Lounge 832", "category": "Bars / Lounges", "neighborhood": "Virginia-Highland", "lat": 33.77594, "lng": -84.35667, "status": "Saved", "note": ""}, {"id": 122, "name": "Burle’s Bar", "category": "Bars / Lounges", "neighborhood": "Old Fourth Ward", "lat": 33.76332, "lng": -84.36753, "status": "Saved", "note": "Wednesday jazz reported; confirm each week"}, {"id": 123, "name": "Stereo", "category": "Bars / Lounges", "neighborhood": "Inman Park", "lat": 33.75967, "lng": -84.34815, "status": "Saved", "note": "Weekend DJs / listening lounge"}, {"id": 124, "name": "Le Bon Nosh", "category": "Bars / Lounges", "neighborhood": "Buckhead", "lat": 33.84168, "lng": -84.37181, "status": "Saved", "note": ""}, {"id": 125, "name": "Gypsy Kitchen", "category": "Bars / Lounges", "neighborhood": "Buckhead", "lat": 33.84109, "lng": -84.37257, "status": "Saved", "note": ""}, {"id": 126, "name": "Monday Night Brewing", "category": "Breweries", "neighborhood": "West Midtown", "lat": 33.78313, "lng": -84.40592, "status": "Saved", "note": ""}, {"id": 127, "name": "Monday Night Brewing (The Grove)", "category": "Breweries", "neighborhood": "West Midtown", "lat": 33.78753, "lng": -84.41356, "status": "Saved", "note": ""}, {"id": 128, "name": "Three Taverns Brewery", "category": "Breweries", "neighborhood": "Old Fourth Ward", "lat": 33.7693, "lng": -84.36377, "status": "Saved", "note": ""}, {"id": 129, "name": "Buckhead Brewing & Lodge", "category": "Breweries", "neighborhood": "Buckhead", "lat": 33.83661, "lng": -84.37925, "status": "Saved", "note": ""}, {"id": 130, "name": "OK Fox", "category": "Other / American", "neighborhood": "Inman Park", "lat": 33.76296, "lng": -84.35153, "status": "Saved", "note": ""}, {"id": 131, "name": "Pretty Hen", "category": "Other / American", "neighborhood": "West Midtown", "lat": 33.78782, "lng": -84.40757, "status": "Saved", "note": ""}, {"id": 132, "name": "Del Bar (Inman Park)", "category": "Other / American", "neighborhood": "Inman Park", "lat": 33.76475, "lng": -84.34821, "status": "Saved", "note": ""}, {"id": 133, "name": "Del Bar (Buckhead)", "category": "Other / American", "neighborhood": "Buckhead", "lat": 33.83617, "lng": -84.36955, "status": "Saved", "note": ""}, {"id": 134, "name": "Le Colonial", "category": "Other / American", "neighborhood": "Buckhead", "lat": 33.84112, "lng": -84.38067, "status": "Saved", "note": ""}, {"id": 135, "name": "Nan Thai Fine Dining", "category": "Other / American", "neighborhood": "Midtown", "lat": 33.77938, "lng": -84.37821, "status": "Saved", "note": ""}, {"id": 136, "name": "Rumi’s Kitchen (Midtown)", "category": "Other / American", "neighborhood": "Midtown", "lat": 33.78443, "lng": -84.38041, "status": "Saved", "note": ""}, {"id": 137, "name": "Rumi’s Kitchen (Sandy Springs)", "category": "Other / American", "neighborhood": "Sandy Springs", "lat": 33.93187, "lng": -84.37297, "status": "Saved", "note": ""}, {"id": 138, "name": "Bar Blanc", "category": "Other / American", "neighborhood": "West Midtown", "lat": 33.7845, "lng": -84.41006, "status": "Saved", "note": ""}, {"id": 139, "name": "Little Sparrow", "category": "Other / American", "neighborhood": "West Midtown", "lat": 33.79174, "lng": -84.41403, "status": "Saved", "note": ""}, {"id": 140, "name": "Pijiu Belly", "category": "Other / American", "neighborhood": "West Midtown", "lat": 33.7927, "lng": -84.41207, "status": "Saved", "note": ""}, {"id": 141, "name": "Lady Bird (Beltline)", "category": "Other / American", "neighborhood": "Old Fourth Ward", "lat": 33.7666, "lng": -84.36722, "status": "Saved", "note": ""}, {"id": 142, "name": "Lady Bird (Westside)", "category": "Other / American", "neighborhood": "West Midtown", "lat": 33.79252, "lng": -84.41695, "status": "Saved", "note": ""}, {"id": 143, "name": "Tiny Lou’s", "category": "Other / American", "neighborhood": "Poncey-Highland", "lat": 33.76995, "lng": -84.3543, "status": "Saved", "note": ""}, {"id": 144, "name": "Haven Restaurant", "category": "Other / American", "neighborhood": "Brookhaven", "lat": 33.86006, "lng": -84.33171, "status": "Saved", "note": ""}, {"id": 145, "name": "OkYaki", "category": "Other / American", "neighborhood": "East Atlanta Village", "lat": 33.73966, "lng": -84.33938, "status": "Saved", "note": ""}, {"id": 146, "name": "Tiger Sun", "category": "Other / American", "neighborhood": "Reynoldstown", "lat": 33.75199, "lng": -84.34927, "status": "Saved", "note": ""}, {"id": 147, "name": "LikeMinds", "category": "Other / American", "neighborhood": "Inman Park", "lat": 33.75723, "lng": -84.34991, "status": "Saved", "note": ""}, {"id": 148, "name": "Bar of Thailand", "category": "Other / American", "neighborhood": "Midtown", "lat": 33.78122, "lng": -84.37734, "status": "Saved", "note": ""}, {"id": 149, "name": "Little Bear", "category": "Other / American", "neighborhood": "Summerhill", "lat": 33.73541, "lng": -84.37504, "status": "Saved", "note": ""}, {"id": 150, "name": "Bark After Dark", "category": "Other / American", "neighborhood": "Summerhill", "lat": 33.72989, "lng": -84.3784, "status": "Saved", "note": ""}, {"id": 151, "name": "Some Luck", "category": "Other / American", "neighborhood": "Poncey-Highland", "lat": 33.77029, "lng": -84.34607, "status": "Upcoming", "note": ""}, {"id": 152, "name": "So. Fox", "category": "Other / American", "neighborhood": "Virginia-Highland", "lat": 33.77791, "lng": -84.34716, "status": "Saved", "note": ""}, {"id": 153, "name": "Ghee Indian Kitchen", "category": "Other / American", "neighborhood": "West Midtown", "lat": 33.78758, "lng": -84.41649, "status": "Saved", "note": ""}, {"id": 154, "name": "Larakin", "category": "Coffee / Pop-ups", "neighborhood": "Midtown", "lat": 33.78764, "lng": -84.38476, "status": "Saved", "note": "Monday sushi pop-up reported; winter ramen rumored"}];
+const places=[{"id":1,"name":"No. 246","category":"Italian","neighborhood":"Decatur","lat":33.77259,"lng":-84.29378,"status":"Saved","note":""},{"id":2,"name":"Sotto Sotto","category":"Italian","neighborhood":"Inman Park","lat":33.76552,"lng":-84.34943,"status":"Saved","note":""},{"id":3,"name":"La Grotta","category":"Italian","neighborhood":"Buckhead","lat":33.83647,"lng":-84.369,"status":"Saved","note":""},{"id":4,"name":"Bocca Lupo","category":"Italian","neighborhood":"Inman Park","lat":33.76084,"lng":-84.34941,"status":"Saved","note":""},{"id":5,"name":"St. Cecilia","category":"Italian","neighborhood":"Buckhead","lat":33.83946,"lng":-84.37915,"status":"Saved","note":""},{"id":6,"name":"Fum","category":"Italian","neighborhood":"West Midtown","lat":33.79284,"lng":-84.40629,"status":"Saved","note":""},{"id":7,"name":"La Tavola Trattoria","category":"Italian","neighborhood":"Virginia-Highland","lat":33.77634,"lng":-84.35083,"status":"Saved","note":""},{"id":8,"name":"Gigi’s Italian Kitchen","category":"Italian","neighborhood":"Candler Park","lat":33.76285,"lng":-84.33425,"status":"Saved","note":""},{"id":9,"name":"The White Bull","category":"Italian","neighborhood":"Decatur","lat":33.77166,"lng":-84.29956,"status":"Saved","note":""},{"id":10,"name":"Capolinea","category":"Italian","neighborhood":"Downtown","lat":33.74849,"lng":-84.39219,"status":"Saved","note":""},{"id":11,"name":"Campagnolo","category":"Italian","neighborhood":"Midtown","lat":33.78169,"lng":-84.38513,"status":"Saved","note":""},{"id":12,"name":"Pricci","category":"Italian","neighborhood":"Buckhead","lat":33.8449,"lng":-84.36926,"status":"Saved","note":""},{"id":13,"name":"Forza Storico","category":"Italian","neighborhood":"West Midtown","lat":33.78886,"lng":-84.41249,"status":"Saved","note":""},{"id":14,"name":"Valenza","category":"Italian","neighborhood":"Brookhaven","lat":33.86309,"lng":-84.3322,"status":"Saved","note":""},{"id":15,"name":"Yeppa & Co (Buckhead)","category":"Italian","neighborhood":"Buckhead","lat":33.8425,"lng":-84.37689,"status":"Saved","note":""},{"id":16,"name":"Yeppa & Co (Beltline)","category":"Italian","neighborhood":"Old Fourth Ward","lat":33.76981,"lng":-84.36754,"status":"Saved","note":""},{"id":17,"name":"Il Giallo","category":"Italian","neighborhood":"Sandy Springs","lat":33.93365,"lng":-84.36966,"status":"Saved","note":""},{"id":18,"name":"Tre Vele","category":"Italian","neighborhood":"Sandy Springs","lat":33.93124,"lng":-84.37313,"status":"Saved","note":""},{"id":19,"name":"Rosso Italian","category":"Italian","neighborhood":"Midtown","lat":33.78222,"lng":-84.38408,"status":"Saved","note":""},{"id":20,"name":"Lyla Lila","category":"Italian","neighborhood":"Midtown","lat":33.78222,"lng":-84.38858,"status":"Saved","note":""},{"id":21,"name":"Gio’s","category":"Italian","neighborhood":"West Midtown","lat":33.79218,"lng":-84.40692,"status":"Saved","note":""},{"id":22,"name":"Fiorenza Italian","category":"Italian","neighborhood":"Alpharetta","lat":34.07358,"lng":-84.29905,"status":"Saved","note":""},{"id":23,"name":"Il Premio","category":"Italian","neighborhood":"Old Fourth Ward","lat":33.76256,"lng":-84.3632,"status":"Saved","note":""},{"id":24,"name":"Indaco","category":"Italian","neighborhood":"Old Fourth Ward","lat":33.767,"lng":-84.35828,"status":"Saved","note":""},{"id":25,"name":"Osteria 832","category":"Italian","neighborhood":"Virginia-Highland","lat":33.77887,"lng":-84.35766,"status":"Saved","note":""},{"id":26,"name":"Luga","category":"Italian","neighborhood":"Decatur","lat":33.77364,"lng":-84.30096,"status":"Saved","note":""},{"id":27,"name":"Lagarde American Eatery","category":"Steakhouse","neighborhood":"Chamblee","lat":33.88553,"lng":-84.30027,"status":"Saved","note":""},{"id":28,"name":"Chops Lobster Bar","category":"Steakhouse","neighborhood":"Buckhead","lat":33.84228,"lng":-84.37971,"status":"Saved","note":""},{"id":29,"name":"Bones","category":"Steakhouse","neighborhood":"Buckhead","lat":33.83796,"lng":-84.37314,"status":"Saved","note":""},{"id":30,"name":"Clark’s Steakhouse","category":"Steakhouse","neighborhood":"Buckhead","lat":33.84291,"lng":-84.37731,"status":"Saved","note":""},{"id":31,"name":"Hal’s The Steakhouse","category":"Steakhouse","neighborhood":"Buckhead","lat":33.84503,"lng":-84.37895,"status":"Saved","note":""},{"id":32,"name":"Luella","category":"Steakhouse","neighborhood":"Buckhead","lat":33.84023,"lng":-84.37685,"status":"Saved","note":""},{"id":33,"name":"New York Prime","category":"Steakhouse","neighborhood":"Buckhead","lat":33.83949,"lng":-84.37709,"status":"Saved","note":""},{"id":34,"name":"Little Alley (Buckhead)","category":"Steakhouse","neighborhood":"Buckhead","lat":33.84058,"lng":-84.36911,"status":"Saved","note":""},{"id":35,"name":"Little Alley (Roswell)","category":"Steakhouse","neighborhood":"Roswell","lat":34.02384,"lng":-84.35761,"status":"Saved","note":""},{"id":36,"name":"Highland Tap","category":"Steakhouse","neighborhood":"Virginia-Highland","lat":33.78289,"lng":-84.35576,"status":"Saved","note":""},{"id":37,"name":"Kevin Rathbun Steak","category":"Steakhouse","neighborhood":"Old Fourth Ward","lat":33.76977,"lng":-84.35792,"status":"Saved","note":""},{"id":38,"name":"Marcel","category":"Steakhouse","neighborhood":"West Midtown","lat":33.78684,"lng":-84.40842,"status":"Saved","note":""},{"id":39,"name":"Arnette’s Chop Shop","category":"Steakhouse","neighborhood":"Brookhaven","lat":33.86118,"lng":-84.34216,"status":"Saved","note":""},{"id":40,"name":"Mastro’s Steakhouse","category":"Steakhouse","neighborhood":"Downtown","lat":33.75335,"lng":-84.38976,"status":"Saved","note":""},{"id":41,"name":"Fleming’s Steakhouse","category":"Steakhouse","neighborhood":"Midtown","lat":33.78772,"lng":-84.38663,"status":"Saved","note":""},{"id":42,"name":"Enzo Italian Steakhouse","category":"Steakhouse","neighborhood":"Midtown","lat":33.78332,"lng":-84.38577,"status":"Upcoming","note":""},{"id":43,"name":"KR SteakBar","category":"Steakhouse","neighborhood":"Buckhead","lat":33.84269,"lng":-84.37678,"status":"Saved","note":""},{"id":44,"name":"H&W Steakhouse","category":"Steakhouse","neighborhood":"Peachtree Corners","lat":33.96795,"lng":-84.22532,"status":"Saved","note":""},{"id":45,"name":"Koshu Club","category":"Steakhouse","neighborhood":"Buckhead","lat":33.83611,"lng":-84.37087,"status":"Saved","note":""},{"id":46,"name":"Fox Bros BBQ","category":"BBQ","neighborhood":"Candler Park","lat":33.76479,"lng":-84.3341,"status":"Saved","note":""},{"id":47,"name":"Gene’s","category":"BBQ","neighborhood":"East Lake","lat":33.76045,"lng":-84.31264,"status":"Saved","note":""},{"id":48,"name":"Heirloom","category":"BBQ","neighborhood":"Vinings","lat":33.87078,"lng":-84.47076,"status":"Saved","note":""},{"id":49,"name":"Broad Street BBQ","category":"BBQ","neighborhood":"Downtown","lat":33.74947,"lng":-84.39515,"status":"Saved","note":""},{"id":50,"name":"Brainwave","category":"Pizza","neighborhood":"Decatur","lat":33.77927,"lng":-84.29599,"status":"Saved","note":""},{"id":51,"name":"Bertolozi’s","category":"Pizza","neighborhood":"Buckhead","lat":33.84398,"lng":-84.37892,"status":"Saved","note":""},{"id":52,"name":"Solar Slice","category":"Pizza","neighborhood":"Marietta","lat":33.94915,"lng":-84.55173,"status":"Saved","note":""},{"id":53,"name":"Baby Blue","category":"Pizza","neighborhood":"Chamblee","lat":33.88556,"lng":-84.29794,"status":"Saved","note":""},{"id":54,"name":"Krog Bar","category":"Pizza","neighborhood":"Buckhead","lat":33.84413,"lng":-84.37621,"status":"Saved","note":""},{"id":55,"name":"Mister O1 (Buckhead)","category":"Pizza","neighborhood":"Buckhead","lat":33.83682,"lng":-84.36989,"status":"Saved","note":""},{"id":56,"name":"Mister O1 (Sandy Springs)","category":"Pizza","neighborhood":"Sandy Springs","lat":33.92976,"lng":-84.37365,"status":"Saved","note":""},{"id":57,"name":"Glide Pizza","category":"Pizza","neighborhood":"Old Fourth Ward","lat":33.76713,"lng":-84.36827,"status":"Saved","note":""},{"id":58,"name":"Spina Pizza","category":"Pizza","neighborhood":"Reynoldstown","lat":33.7463,"lng":-84.34757,"status":"Saved","note":""},{"id":59,"name":"Lloyd’s Pizza & Bar","category":"Pizza","neighborhood":"Inman Park","lat":33.75807,"lng":-84.35208,"status":"Saved","note":""},{"id":60,"name":"Oku","category":"Sushi / Japanese","neighborhood":"West Midtown","lat":33.78713,"lng":-84.4089,"status":"Saved","note":""},{"id":61,"name":"Fudo","category":"Sushi / Japanese","neighborhood":"Chamblee","lat":33.89178,"lng":-84.30158,"status":"Saved","note":""},{"id":62,"name":"Sozou","category":"Sushi / Japanese","neighborhood":"Midtown","lat":33.77887,"lng":-84.38753,"status":"Saved","note":""},{"id":63,"name":"UMI","category":"Sushi / Japanese","neighborhood":"Buckhead","lat":33.83845,"lng":-84.38033,"status":"Saved","note":""},{"id":64,"name":"Nobu Atlanta","category":"Sushi / Japanese","neighborhood":"Buckhead","lat":33.8378,"lng":-84.37837,"status":"Saved","note":""},{"id":65,"name":"Tomo Japanese","category":"Sushi / Japanese","neighborhood":"Buckhead","lat":33.83847,"lng":-84.36949,"status":"Saved","note":""},{"id":66,"name":"Kinjo Room","category":"Sushi / Japanese","neighborhood":"West Midtown","lat":33.78524,"lng":-84.41499,"status":"Saved","note":""},{"id":67,"name":"MF Sushi","category":"Sushi / Japanese","neighborhood":"Inman Park","lat":33.76534,"lng":-84.3563,"status":"Saved","note":""},{"id":68,"name":"Brush Sushi","category":"Sushi / Japanese","neighborhood":"Buckhead","lat":33.84029,"lng":-84.3716,"status":"Saved","note":""},{"id":69,"name":"JuNi","category":"Sushi / Japanese","neighborhood":"Midtown","lat":33.78561,"lng":-84.3842,"status":"Saved","note":""},{"id":70,"name":"Nori Yu Handroll Bar","category":"Sushi / Japanese","neighborhood":"Decatur","lat":33.77049,"lng":-84.30084,"status":"Upcoming","note":""},{"id":71,"name":"Smiley’s Burger Club","category":"Burgers","neighborhood":"Decatur","lat":33.77195,"lng":-84.29592,"status":"Saved","note":""},{"id":72,"name":"Small Fry","category":"Burgers","neighborhood":"Reynoldstown","lat":33.75165,"lng":-84.34701,"status":"Saved","note":""},{"id":73,"name":"Four Seasons Burger","category":"Burgers","neighborhood":"Midtown","lat":33.78208,"lng":-84.3873,"status":"Saved","note":""},{"id":74,"name":"NFA Burger","category":"Burgers","neighborhood":"Dunwoody","lat":33.94667,"lng":-84.33941,"status":"Saved","note":""},{"id":75,"name":"Holeman and Finch","category":"Burgers","neighborhood":"Buckhead","lat":33.83686,"lng":-84.37025,"status":"Saved","note":""},{"id":76,"name":"New Realm","category":"Burgers","neighborhood":"Old Fourth Ward","lat":33.76689,"lng":-84.36011,"status":"Saved","note":""},{"id":77,"name":"Mister Burger","category":"Burgers","neighborhood":"Buckhead","lat":33.84261,"lng":-84.36921,"status":"Saved","note":""},{"id":78,"name":"Evergreen Butcher + Baker","category":"Burgers","neighborhood":"Kirkwood","lat":33.75256,"lng":-84.32425,"status":"Saved","note":""},{"id":79,"name":"Jack Brown’s","category":"Burgers","neighborhood":"Virginia-Highland","lat":33.77979,"lng":-84.35069,"status":"Saved","note":""},{"id":80,"name":"BeetleCat","category":"Seafood","neighborhood":"Inman Park","lat":33.76515,"lng":-84.35416,"status":"Saved","note":""},{"id":81,"name":"Siren ATL","category":"Seafood","neighborhood":"Brookhaven","lat":33.85594,"lng":-84.33729,"status":"Saved","note":""},{"id":82,"name":"Breaker Breaker","category":"Seafood","neighborhood":"Reynoldstown","lat":33.74852,"lng":-84.34263,"status":"Saved","note":""},{"id":83,"name":"PALA Bakery","category":"Sandwiches / Bakery","neighborhood":"Buckhead","lat":33.84197,"lng":-84.3788,"status":"Saved","note":""},{"id":84,"name":"Henri’s Bakery","category":"Sandwiches / Bakery","neighborhood":"Buckhead","lat":33.8386,"lng":-84.37401,"status":"Saved","note":""},{"id":85,"name":"Sammy’s","category":"Sandwiches / Bakery","neighborhood":"Southwest Beltline","lat":33.72838,"lng":-84.41467,"status":"Saved","note":""},{"id":86,"name":"SamWitch","category":"Sandwiches / Bakery","neighborhood":"Pop-up / rotating","lat":33.77151,"lng":-84.37655,"status":"Saved","note":""},{"id":87,"name":"Eggslut","category":"Sandwiches / Bakery","neighborhood":"Old Fourth Ward","lat":33.76556,"lng":-84.35951,"status":"Upcoming","note":""},{"id":88,"name":"Little Tart Bakeshop","category":"Sandwiches / Bakery","neighborhood":"Grant Park","lat":33.73364,"lng":-84.36568,"status":"Saved","note":""},{"id":89,"name":"Midi ATL","category":"Sandwiches / Bakery","neighborhood":"Candler Park","lat":33.76746,"lng":-84.34229,"status":"Saved","note":""},{"id":90,"name":"Kinship Butcher","category":"Sandwiches / Bakery","neighborhood":"Virginia-Highland","lat":33.78048,"lng":-84.34749,"status":"Saved","note":""},{"id":91,"name":"Brooklyn Bagel","category":"Sandwiches / Bakery","neighborhood":"Midtown","lat":33.78154,"lng":-84.38779,"status":"Saved","note":""},{"id":92,"name":"Sugar Loaf","category":"Sandwiches / Bakery","neighborhood":"Reynoldstown","lat":33.74687,"lng":-84.35255,"status":"Saved","note":""},{"id":93,"name":"Emerald City Bagels","category":"Sandwiches / Bakery","neighborhood":"East Atlanta Village","lat":33.74278,"lng":-84.34319,"status":"Saved","note":""},{"id":94,"name":"Necessary Purveyor","category":"Sandwiches / Bakery","neighborhood":"Old Fourth Ward","lat":33.76197,"lng":-84.36656,"status":"Saved","note":""},{"id":95,"name":"Hero Boy (Buckhead)","category":"Sandwiches / Bakery","neighborhood":"Buckhead","lat":33.83964,"lng":-84.38002,"status":"Upcoming","note":""},{"id":96,"name":"Superica","category":"Latin / Mexican","neighborhood":"Inman Park","lat":33.76077,"lng":-84.34749,"status":"Saved","note":""},{"id":97,"name":"La Cueva","category":"Latin / Mexican","neighborhood":"Poncey-Highland","lat":33.77477,"lng":-84.35208,"status":"Saved","note":""},{"id":98,"name":"Vice Taco Truck","category":"Latin / Mexican","neighborhood":"Pop-up / rotating","lat":33.76784,"lng":-84.37949,"status":"Saved","note":""},{"id":99,"name":"El Malo","category":"Latin / Mexican","neighborhood":"Reynoldstown","lat":33.74958,"lng":-84.34944,"status":"Saved","note":""},{"id":100,"name":"Botanico Cocina","category":"Latin / Mexican","neighborhood":"Midtown","lat":33.77937,"lng":-84.38869,"status":"Saved","note":""},{"id":101,"name":"Casi Cielo","category":"Latin / Mexican","neighborhood":"Old Fourth Ward","lat":33.76182,"lng":-84.36146,"status":"Saved","note":""},{"id":102,"name":"El Valle","category":"Latin / Mexican","neighborhood":"Brookhaven","lat":33.86293,"lng":-84.33338,"status":"Saved","note":""},{"id":103,"name":"Taqueria Lobito","category":"Latin / Mexican","neighborhood":"Midtown","lat":33.78522,"lng":-84.38426,"status":"Saved","note":""},{"id":104,"name":"May Peel","category":"Bars / Lounges","neighborhood":"Midtown","lat":33.78651,"lng":-84.38109,"status":"Saved","note":""},{"id":105,"name":"Celestia","category":"Bars / Lounges","neighborhood":"Midtown","lat":33.78755,"lng":-84.38355,"status":"Saved","note":""},{"id":106,"name":"Y Bar","category":"Bars / Lounges","neighborhood":"Buckhead","lat":33.84123,"lng":-84.37877,"status":"Saved","note":""},{"id":107,"name":"Lucian Books & Wine","category":"Bars / Lounges","neighborhood":"Buckhead","lat":33.83726,"lng":-84.37711,"status":"Saved","note":""},{"id":108,"name":"Sargent Atlanta","category":"Bars / Lounges","neighborhood":"Old Fourth Ward","lat":33.76319,"lng":-84.36087,"status":"Saved","note":""},{"id":109,"name":"Read the Room","category":"Bars / Lounges","neighborhood":"Old Fourth Ward","lat":33.76897,"lng":-84.36166,"status":"Saved","note":""},{"id":110,"name":"Close Company","category":"Bars / Lounges","neighborhood":"Old Fourth Ward","lat":33.76397,"lng":-84.36729,"status":"Saved","note":""},{"id":111,"name":"Rabbit Ears","category":"Bars / Lounges","neighborhood":"West Midtown","lat":33.78741,"lng":-84.41091,"status":"Upcoming","note":""},{"id":112,"name":"Bar Schmutzi","category":"Bars / Lounges","neighborhood":"East Atlanta Village","lat":33.74181,"lng":-84.33855,"status":"Upcoming","note":""},{"id":113,"name":"SAGRA","category":"Bars / Lounges","neighborhood":"East Atlanta Village","lat":33.74252,"lng":-84.34005,"status":"Saved","note":""},{"id":114,"name":"Banshee","category":"Bars / Lounges","neighborhood":"East Atlanta Village","lat":33.74275,"lng":-84.34755,"status":"Saved","note":""},{"id":115,"name":"Irish Exit","category":"Bars / Lounges","neighborhood":"Downtown","lat":33.75003,"lng":-84.39061,"status":"Saved","note":""},{"id":116,"name":"Bar ANA","category":"Bars / Lounges","neighborhood":"Poncey-Highland","lat":33.77773,"lng":-84.35004,"status":"Saved","note":""},{"id":117,"name":"Madeira Park","category":"Bars / Lounges","neighborhood":"Poncey-Highland","lat":33.77542,"lng":-84.34443,"status":"Saved","note":""},{"id":118,"name":"Omma","category":"Bars / Lounges","neighborhood":"West Midtown","lat":33.78469,"lng":-84.4167,"status":"Upcoming","note":""},{"id":119,"name":"MidCity","category":"Bars / Lounges","neighborhood":"Midtown","lat":33.78407,"lng":-84.38733,"status":"Saved","note":""},{"id":120,"name":"Bar Pilar","category":"Bars / Lounges","neighborhood":"Midtown","lat":33.78306,"lng":-84.37785,"status":"Saved","note":""},{"id":121,"name":"Lounge 832","category":"Bars / Lounges","neighborhood":"Virginia-Highland","lat":33.77594,"lng":-84.35667,"status":"Saved","note":""},{"id":122,"name":"Burle’s Bar","category":"Bars / Lounges","neighborhood":"Old Fourth Ward","lat":33.76332,"lng":-84.36753,"status":"Saved","note":"Wednesday jazz reported; confirm each week"},{"id":123,"name":"Stereo","category":"Bars / Lounges","neighborhood":"Inman Park","lat":33.75967,"lng":-84.34815,"status":"Saved","note":"Weekend DJs / listening lounge"},{"id":124,"name":"Le Bon Nosh","category":"Bars / Lounges","neighborhood":"Buckhead","lat":33.84168,"lng":-84.37181,"status":"Saved","note":""},{"id":125,"name":"Gypsy Kitchen","category":"Bars / Lounges","neighborhood":"Buckhead","lat":33.84109,"lng":-84.37257,"status":"Saved","note":""},{"id":126,"name":"Monday Night Brewing","category":"Breweries","neighborhood":"West Midtown","lat":33.78313,"lng":-84.40592,"status":"Saved","note":""},{"id":127,"name":"Monday Night Brewing (The Grove)","category":"Breweries","neighborhood":"West Midtown","lat":33.78753,"lng":-84.41356,"status":"Saved","note":""},{"id":128,"name":"Three Taverns Brewery","category":"Breweries","neighborhood":"Old Fourth Ward","lat":33.7693,"lng":-84.36377,"status":"Saved","note":""},{"id":129,"name":"Buckhead Brewing & Lodge","category":"Breweries","neighborhood":"Buckhead","lat":33.83661,"lng":-84.37925,"status":"Saved","note":""},{"id":130,"name":"OK Fox","category":"Other / American","neighborhood":"Inman Park","lat":33.76296,"lng":-84.35153,"status":"Saved","note":""},{"id":131,"name":"Pretty Hen","category":"Other / American","neighborhood":"West Midtown","lat":33.78782,"lng":-84.40757,"status":"Saved","note":""},{"id":132,"name":"Del Bar (Inman Park)","category":"Other / American","neighborhood":"Inman Park","lat":33.76475,"lng":-84.34821,"status":"Saved","note":""},{"id":133,"name":"Del Bar (Buckhead)","category":"Other / American","neighborhood":"Buckhead","lat":33.83617,"lng":-84.36955,"status":"Saved","note":""},{"id":134,"name":"Le Colonial","category":"Other / American","neighborhood":"Buckhead","lat":33.84112,"lng":-84.38067,"status":"Saved","note":""},{"id":135,"name":"Nan Thai Fine Dining","category":"Other / American","neighborhood":"Midtown","lat":33.77938,"lng":-84.37821,"status":"Saved","note":""},{"id":136,"name":"Rumi’s Kitchen (Midtown)","category":"Other / American","neighborhood":"Midtown","lat":33.78443,"lng":-84.38041,"status":"Saved","note":""},{"id":137,"name":"Rumi’s Kitchen (Sandy Springs)","category":"Other / American","neighborhood":"Sandy Springs","lat":33.93187,"lng":-84.37297,"status":"Saved","note":""},{"id":138,"name":"Bar Blanc","category":"Other / American","neighborhood":"West Midtown","lat":33.7845,"lng":-84.41006,"status":"Saved","note":""},{"id":139,"name":"Little Sparrow","category":"Other / American","neighborhood":"West Midtown","lat":33.79174,"lng":-84.41403,"status":"Saved","note":""},{"id":140,"name":"Pijiu Belly","category":"Other / American","neighborhood":"West Midtown","lat":33.7927,"lng":-84.41207,"status":"Saved","note":""},{"id":141,"name":"Lady Bird (Beltline)","category":"Other / American","neighborhood":"Old Fourth Ward","lat":33.7666,"lng":-84.36722,"status":"Saved","note":""},{"id":142,"name":"Lady Bird (Westside)","category":"Other / American","neighborhood":"West Midtown","lat":33.79252,"lng":-84.41695,"status":"Saved","note":""},{"id":143,"name":"Tiny Lou’s","category":"Other / American","neighborhood":"Poncey-Highland","lat":33.76995,"lng":-84.3543,"status":"Saved","note":""},{"id":144,"name":"Haven Restaurant","category":"Other / American","neighborhood":"Brookhaven","lat":33.86006,"lng":-84.33171,"status":"Saved","note":""},{"id":145,"name":"OkYaki","category":"Other / American","neighborhood":"East Atlanta Village","lat":33.73966,"lng":-84.33938,"status":"Saved","note":""},{"id":146,"name":"Tiger Sun","category":"Other / American","neighborhood":"Reynoldstown","lat":33.75199,"lng":-84.34927,"status":"Saved","note":""},{"id":147,"name":"LikeMinds","category":"Other / American","neighborhood":"Inman Park","lat":33.75723,"lng":-84.34991,"status":"Saved","note":""},{"id":148,"name":"Bar of Thailand","category":"Other / American","neighborhood":"Midtown","lat":33.78122,"lng":-84.37734,"status":"Saved","note":""},{"id":149,"name":"Little Bear","category":"Other / American","neighborhood":"Summerhill","lat":33.73541,"lng":-84.37504,"status":"Saved","note":""},{"id":150,"name":"Bark After Dark","category":"Other / American","neighborhood":"Summerhill","lat":33.72989,"lng":-84.3784,"status":"Saved","note":""},{"id":151,"name":"Some Luck","category":"Other / American","neighborhood":"Poncey-Highland","lat":33.77029,"lng":-84.34607,"status":"Upcoming","note":""},{"id":152,"name":"So. Fox","category":"Other / American","neighborhood":"Virginia-Highland","lat":33.77791,"lng":-84.34716,"status":"Saved","note":""},{"id":153,"name":"Ghee Indian Kitchen","category":"Other / American","neighborhood":"West Midtown","lat":33.78758,"lng":-84.41649,"status":"Saved","note":""},{"id":154,"name":"Larakin","category":"Coffee / Pop-ups","neighborhood":"Midtown","lat":33.78764,"lng":-84.38476,"status":"Saved","note":"Monday sushi pop-up reported; winter ramen rumored"},{"id":155,"name":"Spoon Eastside","category":"Thai","neighborhood":"East Atlanta Village","lat":33.74278,"lng":-84.34319,"status":"Saved","note":"Thai comfort food at 749 Moreland Ave SE. Eater highlights the khao soi.","source":"https://atlanta.eater.com/dining-report/87146/spoon-eastside-review-stranger-things-priah-ferguson"}];
 const colors={"Italian":"#db8c6c","Steakhouse":"#d9b36e","Pizza":"#e6a565","Sushi / Japanese":"#86b7ce","Bars / Lounges":"#c69be0","Breweries":"#c7b36b","BBQ":"#b57b68","Burgers":"#d6a77c","Seafood":"#7fc4bd","Sandwiches / Bakery":"#c2aa80","Latin / Mexican":"#d28d8d","Other / American":"#95b99d","Coffee / Pop-ups":"#a9c6b0"};
 const $=id=>document.getElementById(id);
 const favs=new Set(JSON.parse(localStorage.getItem("atl_favorites")||"[]"));
@@ -130,6 +130,15 @@ directions.rel = "noopener";
 directions.textContent = "Directions ↗";
 directions.addEventListener("click", event => event.stopPropagation());
 d.appendChild(directions);
+if (p.source) {
+  const source = document.createElement("a");
+  source.href = p.source;
+  source.target = "_blank";
+  source.rel = "noopener noreferrer";
+  source.textContent = " · Eater review ↗";
+  source.addEventListener("click", event => event.stopPropagation());
+  d.appendChild(source);
+}
 $("results").appendChild(d);
 });
 }
@@ -266,14 +275,487 @@ const listings = [
     "description": "The Little Five Points music venue announced plans to close at the end of the year after 35 years.",
     "source": "Rough Draft Atlanta",
     "url": "https://roughdraftatlanta.com/2026/11/05/restaurant-openings-galore/"
+  },
+  {
+    "section": "events",
+    "title": "Tipsy Santa at American Dive",
+    "area": "Downtown",
+    "date": "Nov 27, 2026 – Dec 25, 2026",
+    "start": "2026-11-27",
+    "expires": "2026-12-25",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Holiday cocktails, live bands and a mixology class.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Naughtical Holidays at BeetleCat",
+    "area": "Inman Park",
+    "date": "Nov 28, 2026 – Dec 31, 2026",
+    "start": "2026-11-28",
+    "expires": "2026-12-31",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Holiday cocktails downstairs at The Den.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "The Blind Elf at Tin Lizzy’s",
+    "area": "Midtown",
+    "date": "November 2026 · check hours",
+    "start": "2026-11-07",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "The pop-up moved to Tin Lizzy’s Midtown. The guides differ on the exact opening day.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Holiday Hideaway at Drawbar",
+    "area": "West Midtown",
+    "date": "From Nov 13, 2026 · end date pending",
+    "start": "2026-11-13",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Seasonal cocktails at the Bellyard hotel.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Holiday Social Bar at Ponce City Market",
+    "area": "Old Fourth Ward",
+    "date": "From Nov 27, 2026 · end date pending",
+    "start": "2026-11-27",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Holiday drinks inside the rooftop tower lobby.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "MixMas at 12 Cocktail Bar",
+    "area": "Old Fourth Ward",
+    "date": "From Nov 27, 2026 · end date pending",
+    "start": "2026-11-27",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Seasonal cocktails on the Ponce City Market rooftop.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Igloos at 9 Mile Station",
+    "area": "Old Fourth Ward",
+    "date": "Nov 27, 2026 – Feb 14, 2027",
+    "start": "2026-11-27",
+    "expires": "2027-02-14",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Private heated rooftop igloos.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Jingle Bar at Chattahoochee Food Works",
+    "area": "Upper Westside",
+    "date": "From Nov 27, 2026 · end date pending",
+    "start": "2026-11-27",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Seasonal cocktails on the food hall patio.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Miracle on Monroe at Après Diem",
+    "area": "Midtown",
+    "date": "Nov 27, 2026 – Dec 30, 2026",
+    "start": "2026-11-27",
+    "expires": "2026-12-30",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Christmas cocktails at Midtown Promenade.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Après Ski at Ranger Station",
+    "area": "Old Fourth Ward",
+    "date": "From Nov 10, 2026 · end date pending",
+    "start": "2026-11-10",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "A ski-lodge pop-up off the Eastside Beltline.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Tinsel & Spurs at Side Saddle",
+    "area": "Southside Beltline",
+    "date": "From Nov 21, 2026 · end date pending",
+    "start": "2026-11-21",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Holiday drinks and themed nights at the wine saloon.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Virtue Rooftop Holiday Bar",
+    "area": "Midtown",
+    "date": "Nov 27, 2026 – Dec 27, 2026",
+    "start": "2026-11-27",
+    "expires": "2026-12-27",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Seasonal drinks and s’mores at 5Church Midtown.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Miracle on 10th Street at Park Tavern",
+    "area": "Midtown",
+    "date": "Nov 28, 2026 – Feb 7, 2027",
+    "start": "2026-11-28",
+    "expires": "2027-02-07",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "A holiday bar and skating by Piedmont Park.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Mariah Carey’s Holiday Bar",
+    "area": "Kirkwood",
+    "date": "From Nov 19, 2026 · end date pending",
+    "start": "2026-11-19",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "A ticketed holiday cocktail pop-up at Pullman Yards.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Blitzen’s at Vues Lobby Bar",
+    "area": "Downtown",
+    "date": "Nov 20, 2026 – Jan 3, 2027",
+    "start": "2026-11-20",
+    "expires": "2027-01-03",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "Seasonal drinks in the Omni’s lobby bar.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Elf’d UP at UP on the Roof",
+    "area": "Alpharetta",
+    "date": "Nov 20, 2026 – Dec 27, 2026",
+    "start": "2026-11-20",
+    "expires": "2026-12-27",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "An elf-themed rooftop cocktail pop-up.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Miracle at Trilith Guesthouse",
+    "area": "Fayetteville",
+    "date": "Nov 21, 2026 – Dec 31, 2026",
+    "start": "2026-11-21",
+    "expires": "2026-12-31",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "A rooftop edition of the Miracle Christmas bar.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Feast of the Seven Fishes at Amore e Amore",
+    "area": "Inman Park",
+    "date": "Dec 24, 2026",
+    "start": "2026-12-24",
+    "expires": "2026-12-24",
+    "tags": [
+      "Holiday",
+      "Date nights"
+    ],
+    "description": "Christmas Eve dinner. Reservations required.",
+    "source": "Amore e Amore",
+    "url": "https://www.amoreeamore.com/experiences"
+  },
+  {
+    "section": "events",
+    "title": "The Elf Upstairs at HOBNOB",
+    "area": "Alpharetta",
+    "date": "Nov 7, 2026 – Jan 3, 2027",
+    "start": "2026-11-07",
+    "expires": "2027-01-03",
+    "tags": [
+      "Holiday",
+      "Pop-ups"
+    ],
+    "description": "An Elf-inspired rooftop pop-up with a seasonal menu.",
+    "source": "HOBNOB",
+    "url": "https://www.hobnobatlanta.com/happenings"
+  },
+  {
+    "section": "events",
+    "title": "A Perfectly Paired Friendsgiving",
+    "area": "Midtown",
+    "date": "Nov 13, 2026",
+    "start": "2026-11-13",
+    "expires": "2026-11-13",
+    "tags": [
+      "Events",
+      "Date nights"
+    ],
+    "description": "Thanksgiving-inspired pairings at the Epicurean Theatre.",
+    "source": "Epicurean Atlanta",
+    "url": "https://www.epicureanhotelatlanta.com/events/2026/a-perfectly-paired-friendsgiving-2026/"
+  },
+  {
+    "section": "events",
+    "title": "Holiday pie class at Last Dance",
+    "area": "Avondale Estates",
+    "date": "Nov 24, 2026",
+    "start": "2026-11-24",
+    "expires": "2026-11-24",
+    "tags": [
+      "Events",
+      "Date nights"
+    ],
+    "description": "A guided chocolate-pecan pie workshop with snacks and wine.",
+    "source": "Rough Draft Atlanta",
+    "url": "https://roughdraftatlanta.com/2026/11/05/quick-bites-nov-5-atlanta-restaurant-news/"
+  },
+  {
+    "section": "events",
+    "title": "Christmas at Dad’s",
+    "area": "Virginia-Highland",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Reported for late November.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Westside Sleigh Ride",
+    "area": "West Midtown",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Announced at Westside Motor Lounge.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Rreal Tacos Christmas Bars",
+    "area": "Multiple locations",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Check the guide for participating locations and dates.",
+    "source": "Discover Atlanta",
+    "url": "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+  },
+  {
+    "section": "events",
+    "title": "Little Christmas Spirit",
+    "area": "Inman Park",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Past-season lead. Check for a 2026 announcement before making plans.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Tiki Holiday at S.O.S. Tiki Bar",
+    "area": "Decatur",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Past-season lead. Check for a 2026 announcement before making plans.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Boeven Bar at Halfway Crooks",
+    "area": "Summerhill",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Past-season lead. Check for a 2026 announcement before making plans.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Chrismukkah at Daily Chew",
+    "area": "Morningside",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Past-season lead. Check for a 2026 announcement before making plans.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "The Third Door",
+    "area": "Marietta",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Past-season lead. Check for a 2026 announcement before making plans.",
+    "source": "RoamRecs",
+    "url": "https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta"
+  },
+  {
+    "section": "events",
+    "title": "Holiday pop-up at Gypsy Kitchen",
+    "area": "Buckhead",
+    "date": "2026 dates pending",
+    "start": "2026-11-11",
+    "expires": "2026-12-11",
+    "tags": [
+      "Holiday",
+      "Pop-ups",
+      "Dates pending"
+    ],
+    "description": "Past-season lead. Check for a 2026 announcement before making plans.",
+    "source": "The Infatuation",
+    "url": "https://www.theinfatuation.com/atlanta/guides/best-holiday-bars-atlanta"
+  },
+  {
+    "section": "openings",
+    "title": "Three Taverns Decatur flagship",
+    "area": "Decatur",
+    "date": "Closure reported Nov 5, 2026",
+    "start": "2026-11-05",
+    "expires": "2026-12-05",
+    "tags": [
+      "Closures & status"
+    ],
+    "description": "The flagship brewery closed. Its Atlanta Dairies and Eastside Beltline locations remain open, according to Rough Draft.",
+    "source": "Rough Draft Atlanta",
+    "url": "https://roughdraftatlanta.com/2026/11/05/quick-bites-nov-5-atlanta-restaurant-news/"
   }
 ];
 const editorialSections = {
   events: {
     title: "What's Happening",
     intro: "Find Atlanta holiday pop-ups, live music and ideas for a night out. Use the venue and organizer links for tickets and hours.",
-    groups: ["Holiday spotlight", "More nights out"],
-    filters: ["Holiday", "Events", "Music", "Pop-ups", "Date nights"]
+    groups: ["Holiday spotlight", "More nights out", "Holiday dates pending"],
+    filters: ["Holiday", "Events", "Music", "Pop-ups", "Date nights", "Dates pending"]
   },
   openings: {
     title: "New & Coming Soon",
@@ -305,7 +787,8 @@ function renderEditorial() {
   const groups = section.groups.map(group => {
     const items = results.filter(item => {
       if (view === "openings") return item.tags.includes(group);
-      return item.tags.includes("Holiday") === (group === "Holiday spotlight");
+      if (item.tags.includes("Dates pending")) return group === "Holiday dates pending";
+      return group === (item.tags.includes("Holiday") ? "Holiday spotlight" : "More nights out");
     });
     if (!items.length) return "";
     return '<section><h3>' + esc(group) + '</h3><div class="editorial-grid">' + items.map(item =>
