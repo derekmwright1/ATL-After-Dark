@@ -27,15 +27,22 @@
 @media(max-width:850px){.layout:not(.map-collapsed) aside{height:55%}.layout:not(.map-collapsed) .mapwrap{height:45%}}
 </style></head><body>
 <header><div><h1>ATL <span>AFTER DARK</span></h1><small>Your restaurant & nightlife field guide</small></div><div class="topright"><span class="count" id="total"></span><button id="export">Export favorites</button></div></header>
-<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="favorites" aria-pressed="false">★ Favorites</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
+<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="plan" aria-pressed="false">Plan a Night</button><button class="tab" data-view="favorites" aria-pressed="false">★ Favorites</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
 <main class="editorial" id="editorial" hidden>
   <div class="editorial-hero"><h2 id="editorial-title"></h2><p id="editorial-intro"></p></div>
-  <div class="editorial-controls">
+  <div class="editorial-controls" id="editorial-filters">
     <label id="listing-filter-label">Category<select id="listing-filter"></select></label>
     <label>Area<select id="listing-area"></select></label>
   </div>
   <p class="muted" id="listing-count" aria-live="polite"></p>
   <div id="listing-groups"></div>
+  <div id="night-planner" hidden>
+    <div class="editorial-controls"><label>Plan your night<select id="plan-section">
+      <option value="weekend">Weekend in Atlanta</option><option value="vibe">Find My Vibe</option>
+      <option value="itineraries">Make a Night of It</option><option value="recurring">Recurring Events</option>
+    </select></label><label id="vibe-control" hidden>Vibe<select id="plan-vibe"></select></label></div>
+    <section id="plan-content" aria-live="polite"></section>
+  </div>
   <details id="opening-sources" hidden><summary>Sources we check</summary><ul><li><a href="https://whatnow.com/atlanta/restaurants/" target="_blank" rel="noopener noreferrer">whatnow.com · restaurants</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/openings" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · openings</a></li><li><a href="https://hauteliving.com/2026/10/the-new-atlanta-every-restaurant-and-bar-opening-of-2026/796911/" target="_blank" rel="noopener noreferrer">hauteliving.com · 796911</a></li><li><a href="https://roughdraftatlanta.com/2026/09/01/24-restaurant-openings/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · 24-restaurant-openings</a></li><li><a href="https://roughdraftatlanta.com/2026/11/04/atlanta-restaurant-openings-october-2026/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · atlanta-restaurant-openings-october-2026</a></li><li><a href="https://atlanta.eater.com/openings/86653/highly-anticipated-restaurant-openings-atlanta-2026" target="_blank" rel="noopener noreferrer">atlanta.eater.com · highly-anticipated-restaurant-openings-atlanta-2026</a></li><li><a href="https://whatnow.com/atlanta/restaurants/4-upcoming-restaurant-openings-we-uncovered-across-metro-atlanta-last-week-nov-2-8/" target="_blank" rel="noopener noreferrer">whatnow.com · 4-upcoming-restaurant-openings-we-uncovered-across-metro-atlanta-</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/exciting-restaurant-openings-atlanta" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · exciting-restaurant-openings-atlanta</a></li><li><a href="https://www.ajc.com/food-and-dining/2026/11/restaurant-openings-closings-october-2026/" target="_blank" rel="noopener noreferrer">www.ajc.com · restaurant-openings-closings-october-2026</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/best-new-restaurants-atlanta-2026" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · best-new-restaurants-atlanta-2026</a></li><li><a href="https://roughdraftatlanta.com/2026/11/05/quick-bites-nov-5-atlanta-restaurant-news/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · quick-bites-nov-5-atlanta-restaurant-news</a></li><li><a href="https://whatnow.com/atlanta/restaurants/ladybird-grove-mess-hall-goes-west-beltline-favorite-opens-second-location-in-west-midtowns-star-metals-district/" target="_blank" rel="noopener noreferrer">whatnow.com · ladybird-grove-mess-hall-goes-west-beltline-favorite-opens-second</a></li><li><a href="https://resy.com/cities/atlanta-ga" target="_blank" rel="noopener noreferrer">resy.com · atlanta-ga</a></li><li><a href="https://www.opentable.com/r/brassica-atlanta" target="_blank" rel="noopener noreferrer">www.opentable.com · brassica-atlanta</a></li><li><a href="https://www.instagram.com/spices.and.spoons/" target="_blank" rel="noopener noreferrer">www.instagram.com · spices.and.spoons</a></li><li><a href="https://www.epicureanhotelatlanta.com/events/2026/a-perfectly-paired-friendsgiving-2026" target="_blank" rel="noopener noreferrer">www.epicureanhotelatlanta.com · a-perfectly-paired-friendsgiving-2026</a></li><li><a href="https://technobeatscloud.com/en/events/november-2026/united-states/atlanta" target="_blank" rel="noopener noreferrer">technobeatscloud.com · atlanta</a></li><li><a href="https://districtatlanta.com/events/index/" target="_blank" rel="noopener noreferrer">districtatlanta.com · index</a></li><li><a href="https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/" target="_blank" rel="noopener noreferrer">discoveratlanta.com · best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun</a></li><li><a href="https://atlantabg.org/calendar/garden-lights-holiday-nights/" target="_blank" rel="noopener noreferrer">atlantabg.org · garden-lights-holiday-nights</a></li><li><a href="https://liveatthebatteryatlanta.com/eat-and-drink/tinsel-tavern" target="_blank" rel="noopener noreferrer">liveatthebatteryatlanta.com · tinsel-tavern</a></li><li><a href="https://www.eventbrite.com/e/block-drum-x-party-pupils-2-year-anniversary-yacht-house-tickets-2002489446841" target="_blank" rel="noopener noreferrer">www.eventbrite.com · block-drum-x-party-pupils-2-year-anniversary-yacht-house-tickets-</a></li><li><a href="https://www.comingsoonproject.com/project/exclusive-restaurant-atlanta-29fa63/?f=hGUnacTky8jW5qpm" target="_blank" rel="noopener noreferrer">www.comingsoonproject.com · ?f=hGUnacTky8jW5qpm</a></li><li><a href="https://roughdraftatlanta.com/2026/11/05/restaurant-openings-galore/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · restaurant-openings-galore</a></li><li><a href="https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta" target="_blank" rel="noopener noreferrer">roamrecs.com · best-christmas-bars-holiday-pop-ups-atlanta</a></li><li><a href="https://www.amoreeamore.com/experiences" target="_blank" rel="noopener noreferrer">www.amoreeamore.com · experiences</a></li><li><a href="https://www.hobnobatlanta.com/happenings" target="_blank" rel="noopener noreferrer">www.hobnobatlanta.com · happenings</a></li><li><a href="https://www.epicureanhotelatlanta.com/events/2026/a-perfectly-paired-friendsgiving-2026/" target="_blank" rel="noopener noreferrer">www.epicureanhotelatlanta.com · a-perfectly-paired-friendsgiving-2026</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/best-holiday-bars-atlanta" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · best-holiday-bars-atlanta</a></li><li><a href="https://atlanta.eater.com/dining-report/87146/spoon-eastside-review-stranger-things-priah-ferguson" target="_blank" rel="noopener noreferrer">atlanta.eater.com · spoon-eastside-review-stranger-things-priah-ferguson</a></li></ul></details>
 </main>
 <script>
@@ -137,6 +144,13 @@ directions.target = "_blank";
 directions.rel = "noopener";
 directions.textContent = "Directions ↗";
 directions.addEventListener("click", event => event.stopPropagation());
+const reason = venueVibes[p.id]?.[1];
+if (reason) {
+  const why = document.createElement("p");
+  why.className = "notes";
+  why.textContent = reason;
+  d.appendChild(why);
+}
 d.appendChild(directions);
 if (p.source) {
   const source = document.createElement("a");
@@ -1882,6 +1896,7 @@ const listings = [
   }
 ];
 const editorialSections = {
+  plan: {title:"Plan a Night", intro:"Find something this weekend, pick a vibe, or take a ready-made route."},
   events: {
     title: "What's Happening",
     intro: "Find Atlanta holiday pop-ups, live music and ideas for a night out. Use the venue and organizer links for tickets and hours.",
@@ -1959,6 +1974,13 @@ document.querySelectorAll(".site-nav button").forEach(button => {
     }
     $("editorial-title").textContent = section.title;
     $("editorial-intro").textContent = section.intro;
+    const planning = view === "plan";
+    for (const id of ["editorial-filters", "listing-count", "listing-groups"]) $(id).hidden = planning;
+    $("night-planner").hidden = !planning;
+    if (planning) {
+      renderPlanner();
+      return;
+    }
     filterOptions("listing-filter", "All categories", section.filters);
     const areas = [...new Set(activeListings(view).map(item => item.area))].sort();
     filterOptions("listing-area", "All areas", areas);
@@ -1967,6 +1989,87 @@ document.querySelectorAll(".site-nav button").forEach(button => {
 });
 ["search","category","neighborhood","status","sort"].forEach(id=>$(id).addEventListener("input",render));
 $("export").onclick=()=>{const names=places.filter(p=>favs.has(p.id)).map(p=>p.name+" — "+p.neighborhood).join("\n");const blob=new Blob([names||"No favorites yet"],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="atlanta-favorites.txt";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+const venueVibes = {"76":["Groups & games","Spread out in the beer garden or head upstairs for BeltLine views."],"104":["Date night","Slip downstairs at Hotel Granada for cocktails in a tucked-away room."],"109":["Vinyl & music","Flip through records and settle in for a cocktail on the BeltLine."],"116":["Date night","Make dessert the main event at this 21+ cocktail bar."],"119":["Vinyl & music","Try an espresso martini in a Midtown listening lounge."],"123":["Vinyl & music","Go for the records and stay for a drink."],"125":["Rooftops","Start with tapas and cocktails on the Buckhead terrace."],"127":["Groups & games","Order pizza and a round of drinks at the Grove."],"147":["Groups & games","Catch a game with barbecue near Krog Street."],"205":["Rooftops","See the skyline from FORTH’s rooftop cocktail lounge."],"206":["Rooftops","Take the tower elevator for skyline cocktails at Ponce City Market."],"210":["Date night","End the night in the intimate cocktail lounge behind the café."],"214":["Date night","Finish a Midtown evening with a cocktail at the Four Seasons."],"215":["Dancing","Head downstairs for DJs and an intimate dance floor."],"218":["Date night","Start with dinner and cocktails in the flower-filled dining room."],"219":["Dancing","Go for DJs and a dance floor that runs late."],"220":["Groups & games","Bring a group for drinks and games by the BeltLine."]};
+const nightRoutes = [
+  {title:"BeltLine dinner and vinyl", area:"Old Fourth Ward", stops:["Ladybird Grove & Mess Hall","Ranger Station","Read the Room"], note:"Start with dinner at Ladybird on the Eastside Trail, head upstairs for cocktails, then finish with vinyl at Read the Room."},
+  {title:"Buckhead cocktails", area:"Buckhead", stops:["The Garden Room","The St. Regis Bar","Himitsu"], note:"Start with dinner at The Garden Room, have a drink at the St. Regis, then book ahead for Himitsu."},
+  {title:"Midtown dinner and drinks", area:"Midtown", stops:["Pataaka","May Peel","Bar Margot at Four Seasons"], note:"Start with dinner at Spring Quarter, then try a tucked-away cocktail bar and a hotel lounge."}
+];
+const recurringNights = [
+  ["Tuesday karaoke","Tuesdays · Clermont Lounge","Sign-up starts at 10 p.m. Venue is 21+.","https://www.clermontlounge.net/"],
+  ["Mario Kart night","Tuesdays · Three Taverns Imaginarium","Games from 7 p.m. to close at Atlanta Dairies.","https://www.threetavernsbrewery.com/imaginarium"],
+  ["Disco Saturday","Saturdays · Clermont Lounge","DJ night at the Ponce landmark. Venue is 21+.","https://www.clermontlounge.net/"]
+];
+function plannerCard(title, detail, reason, link, label) {
+  return '<article class="editorial-card"><h4>' + esc(title) + '</h4><small>' + esc(detail) +
+    '</small><p>' + esc(reason) + '</p><a href="' + esc(link) +
+    '" target="_blank" rel="noopener noreferrer">' + esc(label) + ' ↗</a></article>';
+}
+function weekendWindow() {
+  const today = new Date(atlantaDate.format(new Date()) + "T00:00:00Z");
+  const first = new Date(today);
+  const day = today.getUTCDay();
+  first.setUTCDate(today.getUTCDate() + (day === 0 ? -2 : day === 6 ? -1 : 5 - day));
+  const last = new Date(first);
+  last.setUTCDate(first.getUTCDate() + 2);
+  const label = new Intl.DateTimeFormat("en-US", {timeZone:"UTC", month:"short", day:"numeric"});
+  return {first:first.toISOString().slice(0,10), last:last.toISOString().slice(0,10),
+    today:today.toISOString().slice(0,10), label:label.formatRange(first,last)};
+}
+function renderPlanner() {
+  const selected = $("plan-section").value;
+  $("vibe-control").hidden = selected !== "vibe";
+  const output = $("plan-content");
+  let title, cards;
+  if (selected === "weekend") {
+    const weekend = weekendWindow();
+    title = "Weekend in Atlanta · " + weekend.label;
+    cards = activeListings("events").filter(item => {
+      if (item.tags.includes("Dates pending") || item.start > weekend.last) return false;
+      // An editorial review deadline is not a confirmed event end date.
+      const end = item.date.includes("end date pending") || item.date.includes("check hours") ? item.start : item.expires;
+      return end >= weekend.first && end >= weekend.today;
+    }).sort((a,b) => a.start.localeCompare(b.start)).map(item =>
+      plannerCard(item.title, item.date + " · " + item.area, item.description, item.url, item.source));
+  } else if (selected === "vibe") {
+    title = "Find My Vibe";
+    const vibe = $("plan-vibe").value;
+    cards = places.filter(place => venueVibes[place.id] && (!vibe || venueVibes[place.id][0] === vibe))
+      .map(place => plannerCard(place.name, place.neighborhood + " · " + venueVibes[place.id][0],
+        venueVibes[place.id][1], directionsUrl(place), "Directions"));
+  } else if (selected === "recurring") {
+    title = "Recurring Events";
+    cards = recurringNights.map(([name, detail, reason, url]) =>
+      plannerCard(name, detail, reason, url, "Check venue schedule"));
+  } else {
+    title = "Make a Night of It";
+    cards = nightRoutes.map((route, index) => '<article class="editorial-card"><h4>' + esc(route.title) +
+      '</h4><small>' + esc(route.area) + '</small><p>' + esc(route.note) + '</p><ol>' +
+      route.stops.map(name => {
+        const place = places.find(item => item.name === name && (name !== "Ladybird Grove & Mess Hall" || item.neighborhood === "Old Fourth Ward"));
+        const url = place ? directionsUrl(place) : "https://www.google.com/maps/search/?api=1&query=" +
+          encodeURIComponent(name + " " + route.area + " Atlanta");
+        return '<li><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(name) + '</a></li>';
+      }).join("") + '</ol><button type="button" data-route="' + index + '">Copy plan</button></article>');
+  }
+  output.innerHTML = '<h3>' + esc(title) + '</h3>' + (cards.length ? '<div class="editorial-grid">' +
+    cards.join("") + '</div>' : '<p class="muted">No dated picks for this weekend yet. Try Recurring Events or Make a Night of It.</p>');
+}
+filterOptions("plan-vibe", "All vibes", [...new Set(Object.values(venueVibes).map(([vibe]) => vibe))].sort());
+$("plan-section").addEventListener("change", renderPlanner);
+$("plan-vibe").addEventListener("change", renderPlanner);
+$("plan-content").addEventListener("click", async event => {
+  const button = event.target.closest("button[data-route]");
+  if (!button) return;
+  const route = nightRoutes[Number(button.dataset.route)];
+  const plan = route.title + " · " + route.area + "\n" + route.stops.join(" → ") + "\n" + route.note;
+  try {
+    await navigator.clipboard.writeText(plan);
+    button.textContent = "Copied";
+  } catch {
+    window.prompt("Copy this plan", plan);
+  }
+});
 $("map-toggle").addEventListener("click", () => {
   const panel = $("map-panel");
   panel.hidden = !panel.hidden;
