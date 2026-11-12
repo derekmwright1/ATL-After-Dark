@@ -25,7 +25,18 @@
 .map-collapsed aside{height:100%;border:0}
 .map-collapsed .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));align-content:start}
 @media(max-width:850px){.layout:not(.map-collapsed) aside{height:55%}.layout:not(.map-collapsed) .mapwrap{height:45%}}
-</style></head><body>
+</style><script>
+if (location.hostname === "the-atlanta-scene.com") {
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "G-HDRCL49VF9", {allow_google_signals: false, allow_ad_personalization_signals: false});
+  const analytics = document.createElement("script");
+  analytics.async = true;
+  analytics.src = "https://www.googletagmanager.com/gtag/js?id=G-HDRCL49VF9";
+  document.head.appendChild(analytics);
+}
+</script></head><body>
 <header><div><h1>ATL <span>AFTER DARK</span></h1><small>Your restaurant & nightlife field guide</small></div><div class="topright"><span class="count" id="total"></span></div></header>
 <nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="plan" aria-pressed="false">Plan a Night</button><button class="tab" data-view="news" aria-pressed="false">Atlanta News</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option><option>Temporarily closed</option><option>Closed</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
 <main class="editorial" id="editorial" hidden>
