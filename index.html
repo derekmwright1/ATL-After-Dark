@@ -25,6 +25,8 @@
 .map-collapsed aside{height:100%;border:0}
 .map-collapsed .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));align-content:start}
 @media(max-width:850px){.layout:not(.map-collapsed) aside{height:55%}.layout:not(.map-collapsed) .mapwrap{height:45%}}
+
+.booking-link{color:var(--gold);margin-inline-start:10px}.editorial-card .booking-link{margin-inline-start:0;margin-top:4px}.editorial-card li .booking-link{margin-inline-start:8px}
 </style><script>
 if (location.hostname === "the-atlanta-scene.com") {
   window.dataLayer = window.dataLayer || [];
@@ -123,6 +125,32 @@ async function loadMap() {
   }
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const venueBooking = {
+  "Il Premio": ["Reserve on Resy", "https://resy.com/cities/atlanta-ga/venues/il-premio"],
+  "Sargent": ["Reserve on Resy", "https://resy.com/cities/atlanta-ga/venues/sargent"],
+  "Elektra": ["Reserve on Resy", "https://resy.com/cities/atlanta-ga/venues/elektra"],
+  "Moonlight": ["Walk-in details", "https://moonlightatlanta.com/"],
+  "Bar Premio": ["Visit venue website", "https://barpremioatlanta.com/"],
+  "Sozou": ["Reserve on OpenTable", "https://www.opentable.com/r/sozou-atlanta"],
+  "Ishin Omakase": ["Reserve on OpenTable", "https://www.opentable.com/restaurant/profile/1463197"],
+  "Fudo": ["Reserve on Resy", "https://resy.com/cities/chamblee-ga/venues/fudo"],
+  "KR SteakBar": ["Reserve on Resy", "https://resy.com/cities/atlanta-ga/venues/kr-steakbar"],
+  "Delbar (Buckhead)": ["Reservations at Delbar", "https://www.delbaratl.com/location-buckhead"],
+  "Delbar (Inman Park)": ["Reservations at Delbar", "https://www.delbaratl.com/location-inman-park"],
+  "Yeppa & Co (Buckhead)": ["Reservations at Yeppa", "https://www.yhospitality.com/yeppa-buckhead"],
+  "Lucian Books & Wine": ["Reservations at Lucian", "https://www.lucianbooksandwine.com/policies-and-faqs"],
+  "Nobu Atlanta": ["Reservations at Nobu", "https://noburestaurants.com/atlanta/reservations"]
+};
+function bookingLink(place) {
+  if (!place || (place.status && place.status !== "Saved")) return "";
+  const query = [place.name, place.address, place.neighborhood, "Georgia reservations"].filter(Boolean).join(" ");
+  const [label, url] = venueBooking[place.name] ||
+    ["Find booking options", "https://www.google.com/search?q=" + encodeURIComponent(query)];
+  return '<a class="booking-link" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(label) + ' ↗</a>';
+}
+function listingVenue(item) {
+  return places.find(place => place.name === item.title && place.neighborhood === item.area);
+}
 function directionsUrl(p){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.name+" "+(p.address || "")+" "+p.neighborhood+" GA")}
 
 function options(id,values){values.sort().forEach(v=>{const o=document.createElement("option");o.textContent=v;o.value=v;$(id).appendChild(o)})}
@@ -169,6 +197,8 @@ if (reason) {
   d.appendChild(why);
 }
 d.appendChild(directions);
+d.insertAdjacentHTML("beforeend", bookingLink(p));
+d.querySelector(".booking-link")?.addEventListener("click", event => event.stopPropagation());
 if (p.source) {
   const source = document.createElement("a");
   source.href = p.source;
@@ -2043,7 +2073,7 @@ function renderEditorial() {
       '<article class="editorial-card"><p class="listing-type">' + esc(item.tags.join(" · ")) +
       '</p><h4>' + esc(item.title) + '</h4><small>' + esc(item.date + " · " + item.area) +
       '</small><p>' + esc(item.description) + '</p><a href="' + esc(item.url) +
-      '" target="_blank" rel="noopener noreferrer">' + esc(item.source) + ' ↗</a></article>'
+      '" target="_blank" rel="noopener noreferrer">' + esc(item.source) + ' ↗</a>' + bookingLink(listingVenue(item)) + '</article>'
     ).join("") + '</div></section>';
   });
   $("listing-groups").innerHTML = groups.join("");
@@ -2102,10 +2132,10 @@ const recurringNights = [
   ["Mario Kart night","Tuesdays · Three Taverns Imaginarium","Games from 7 p.m. to close at Atlanta Dairies.","https://www.threetavernsbrewery.com/imaginarium"],
   ["Disco Saturday","Saturdays · Clermont Lounge","DJ night at the Ponce landmark. Venue is 21+.","https://www.clermontlounge.net/"]
 ];
-function plannerCard(title, detail, reason, link, label) {
+function plannerCard(title, detail, reason, link, label, place) {
   return '<article class="editorial-card"><h4>' + esc(title) + '</h4><small>' + esc(detail) +
     '</small><p>' + esc(reason) + '</p><a href="' + esc(link) +
-    '" target="_blank" rel="noopener noreferrer">' + esc(label) + ' ↗</a></article>';
+    '" target="_blank" rel="noopener noreferrer">' + esc(label) + ' ↗</a>' + bookingLink(place) + '</article>';
 }
 function weekendWindow() {
   const today = new Date(atlantaDate.format(new Date()) + "T00:00:00Z");
@@ -2176,12 +2206,12 @@ function renderPairings() {
         esc([bar.neighborhood, bar.address].filter(Boolean).join(" · ")) + '</small><p>' +
         '<a target="_blank" rel="noopener noreferrer" href="' + esc(pairingDirections(origin, destination, "walking")) +
         '">Walking directions ↗</a><br><a target="_blank" rel="noopener noreferrer" href="' +
-        esc(pairingDirections(origin, destination, "driving")) + '">Driving directions ↗</a></p></article>';
+        esc(pairingDirections(origin, destination, "driving")) + '">Driving directions ↗</a></p>' + bookingLink(bar) + '</article>';
     }).join("");
   }
   const local = cards(bars.filter(bar => bar.neighborhood === area));
   const close = cards(bars.filter(bar => nearby.includes(bar.neighborhood)));
-  content.innerHTML = '<h3>Cocktails ' + (before ? 'before' : 'after') + ' ' + esc(dinner.name) + '</h3>' +
+  content.innerHTML = '<h3>Cocktails ' + (before ? 'before' : 'after') + ' ' + esc(dinner.name) + '</h3>' + bookingLink(dinner) +
     '<p class="muted">Open a route to check the current walk or drive time.</p>' +
     (local ? '<h4>In ' + esc(area) + '</h4><div class="editorial-grid">' + local + '</div>' : '') +
     (close ? '<h4>Nearby areas</h4><div class="editorial-grid">' + close + '</div>' : '') +
@@ -2208,13 +2238,13 @@ function renderPlanner() {
       const end = item.date.includes("end date pending") || item.date.includes("check hours") ? item.start : item.expires;
       return end >= weekend.first && end >= weekend.today;
     }).sort((a,b) => a.start.localeCompare(b.start)).map(item =>
-      plannerCard(item.title, item.date + " · " + item.area, item.description, item.url, item.source));
+      plannerCard(item.title, item.date + " · " + item.area, item.description, item.url, item.source, listingVenue(item)));
   } else if (selected === "vibe") {
     title = "Find My Vibe";
     const vibe = $("plan-vibe").value;
     cards = places.filter(place => venueVibes[place.id] && (!vibe || venueVibes[place.id][0] === vibe))
       .map(place => plannerCard(place.name, place.neighborhood + " · " + venueVibes[place.id][0],
-        venueVibes[place.id][1], directionsUrl(place), "Directions"));
+        venueVibes[place.id][1], directionsUrl(place), "Directions", place));
   } else if (selected === "recurring") {
     title = "Recurring Events";
     cards = recurringNights.map(([name, detail, reason, url]) =>
@@ -2227,7 +2257,7 @@ function renderPlanner() {
         const place = places.find(item => item.name === name && (name !== "Ladybird Grove & Mess Hall" || item.neighborhood === "Old Fourth Ward"));
         const url = place ? directionsUrl(place) : "https://www.google.com/maps/search/?api=1&query=" +
           encodeURIComponent(name + " " + route.area + " Atlanta");
-        return '<li><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(name) + '</a></li>';
+        return '<li><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(name) + '</a>' + bookingLink(place || {name, neighborhood:route.area}) + '</li>';
       }).join("") + '</ol><button type="button" data-route="' + index + '">Copy plan</button></article>');
   }
   output.innerHTML = '<h3>' + esc(title) + '</h3>' + (cards.length ? '<div class="editorial-grid">' +
