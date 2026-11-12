@@ -27,7 +27,7 @@
 @media(max-width:850px){.layout:not(.map-collapsed) aside{height:55%}.layout:not(.map-collapsed) .mapwrap{height:45%}}
 </style></head><body>
 <header><div><h1>ATL <span>AFTER DARK</span></h1><small>Your restaurant & nightlife field guide</small></div><div class="topright"><span class="count" id="total"></span><button id="export">Export favorites</button></div></header>
-<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="plan" aria-pressed="false">Plan a Night</button><button class="tab" data-view="favorites" aria-pressed="false">★ Favorites</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option><option>Temporarily closed</option><option>Closed</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
+<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="plan" aria-pressed="false">Plan a Night</button><button class="tab" data-view="news" aria-pressed="false">Atlanta News</button><button class="tab" data-view="favorites" aria-pressed="false">★ Favorites</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option><option>Temporarily closed</option><option>Closed</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
 <main class="editorial" id="editorial" hidden>
   <div class="editorial-hero"><h2 id="editorial-title"></h2><p id="editorial-intro"></p></div>
   <div class="editorial-controls" id="editorial-filters">
@@ -36,6 +36,7 @@
   </div>
   <p class="muted" id="listing-count" aria-live="polite"></p>
   <div id="listing-groups"></div>
+  <div id="atlanta-news" hidden></div>
   <div id="night-planner" hidden>
     <div class="editorial-controls"><label>Plan your night<select id="plan-section">
       <option value="weekend">Weekend in Atlanta</option><option value="vibe">Find My Vibe</option>
@@ -1923,7 +1924,58 @@ const listings = [
     "url": "https://guide.michelin.com/us/en/georgia/chamblee_2884167/restaurant/the-alden"
   }
 ];
+const newsEditions = [
+  {
+    "date": "2026-11-12",
+    "stories": [
+      [
+        "Opening watch",
+        "Hero Boy plans a Chastain Square location",
+        "The sandwich shop is targeting early 2027 for its second location. Amasa’s two conversions and La Parrilla’s East Cobb expansion are also in the pipeline.",
+        "What Now Atlanta",
+        "https://whatnow.com/atlanta/restaurants/4-upcoming-restaurant-openings-we-uncovered-across-metro-atlanta-last-week-nov-2-8/"
+      ],
+      [
+        "Now open",
+        "Mastro’s opens Downtown",
+        "The steak and seafood restaurant opened Nov. 6 at The CTR, the former CNN Center.",
+        "Rough Draft Atlanta",
+        "https://roughdraftatlanta.com/2026/10/08/downtown-atlanta-restaurant-openings/"
+      ],
+      [
+        "This weekend",
+        "Garden Lights opens Saturday",
+        "The Atlanta Botanical Garden’s holiday light show begins Nov. 14 and runs through Jan. 10. The garden sells timed tickets.",
+        "Atlanta Botanical Garden",
+        "https://atlantabg.org/calendar/garden-lights-holiday-nights/"
+      ],
+      [
+        "Holiday pop-ups",
+        "Bar Noël returns to Bar Blanc",
+        "The West Midtown bar’s French-inspired Christmas pop-up is scheduled for Dec. 1–30.",
+        "Discover Atlanta",
+        "https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/"
+      ],
+      [
+        "Closing watch",
+        "Star Community Bar plans a year-end closure",
+        "The Little Five Points music venue announced plans to close at the end of 2026.",
+        "Rough Draft Atlanta",
+        "https://roughdraftatlanta.com/2026/11/05/restaurant-openings-galore/"
+      ]
+    ]
+  }
+];
+function renderNews() {
+  const dateLabel = new Intl.DateTimeFormat("en-US", {timeZone:"UTC", month:"long", day:"numeric", year:"numeric"});
+  $("atlanta-news").innerHTML = [...newsEditions].sort((a,b) => b.date.localeCompare(a.date)).map(edition =>
+    '<section><h3><time datetime="' + esc(edition.date) + '">' +
+    dateLabel.format(new Date(edition.date + "T00:00:00Z")) + '</time></h3><div class="editorial-grid">' +
+    edition.stories.map(([type, title, detail, source, url]) => plannerCard(title, type, detail, url, "Read at " + source))
+      .join("") + '</div></section>').join("");
+}
 const editorialSections = {
+  news: {title:"Atlanta News", intro:"Source-linked briefings on Atlanta dining, openings, closures and things to do."},
   plan: {title:"Plan a Night", intro:"Find something this weekend, pick a vibe, or take a ready-made route."},
   events: {
     title: "What's Happening",
@@ -1995,7 +2047,7 @@ document.querySelectorAll(".site-nav button").forEach(button => {
     const section = editorialSections[view];
     $("directory").hidden = Boolean(section);
     $("editorial").hidden = !section;
-    $("opening-sources").hidden = view !== "openings";
+    $("opening-sources").hidden = view !== "openings" && view !== "news";
     if (!section) {
       render();
       return;
@@ -2003,8 +2055,14 @@ document.querySelectorAll(".site-nav button").forEach(button => {
     $("editorial-title").textContent = section.title;
     $("editorial-intro").textContent = section.intro;
     const planning = view === "plan";
-    for (const id of ["editorial-filters", "listing-count", "listing-groups"]) $(id).hidden = planning;
+    const news = view === "news";
+    $("atlanta-news").hidden = !news;
+    for (const id of ["editorial-filters", "listing-count", "listing-groups"]) $(id).hidden = planning || news;
     $("night-planner").hidden = !planning;
+    if (news) {
+      renderNews();
+      return;
+    }
     if (planning) {
       renderPlanner();
       return;
