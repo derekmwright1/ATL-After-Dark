@@ -40,7 +40,7 @@ if (location.hostname === "the-atlanta-scene.com") {
 }
 </script></head><body>
 <header><div><h1>ATL <span>AFTER DARK</span></h1><small>Your restaurant & nightlife field guide</small></div><div class="topright"><span class="count" id="total"></span></div></header>
-<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="plan" aria-pressed="false">Plan a Night</button><button class="tab" data-view="news" aria-pressed="false">Atlanta News</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option><option>Temporarily closed</option><option>Closed</option><option>Status unverified</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate neighborhood locations</b>, not verified street addresses. Select a venue for Google Maps directions.</div></div></div>
+<nav class="site-nav" aria-label="Guide sections"><button class="tab active" data-view="places" aria-pressed="true">Explore</button><button class="tab" data-view="events" aria-pressed="false">What's Happening</button><button class="tab" data-view="openings" aria-pressed="false">New &amp; Coming Soon</button><button class="tab" data-view="plan" aria-pressed="false">Plan a Night</button><button class="tab" data-view="news" aria-pressed="false">Atlanta News</button></nav><div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Upcoming</option><option>Temporarily closed</option><option>Closed</option><option>Status unverified</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate areas</b>. Use Directions for street addresses. Listings without a known location may appear only in the list.</div></div></div>
 <main class="editorial" id="editorial" hidden>
   <div class="editorial-hero"><h2 id="editorial-title"></h2><p id="editorial-intro"></p></div>
   <div class="editorial-controls" id="editorial-filters">
@@ -70,7 +70,60 @@ const colors={"Italian":"#db8c6c","Steakhouse":"#d9b36e","Pizza":"#e6a565","Sush
 const $=id=>document.getElementById(id);
 const venueAliases = {167:81,194:102};
 const favs=new Set(JSON.parse(localStorage.getItem("atl_favorites")||"[]").map(id => venueAliases[id] || id));
-let map, infoWindow, AdvancedMarkerElement;
+let map, infoWindow, markerLibrary;
+let visiblePinPositions = [], fittedFilters;
+
+const areaCenters = {
+  "Tucker": [33.854, -84.217], "Upper Westside": [33.814, -84.443],
+  "Avondale Estates": [33.775, -84.267], "Southwest Atlanta": [33.728, -84.447],
+  "Smyrna": [33.884, -84.514], "Powder Springs": [33.859, -84.683],
+  "Morrow": [33.583, -84.340], "Fayetteville": [33.449, -84.455],
+  "Cumming": [34.207, -84.140], "Edgewood": [33.751, -84.346],
+  "Conyers": [33.668, -84.017], "Johns Creek": [34.029, -84.198],
+  "Cabbagetown": [33.748, -84.364], "Armour": [33.815, -84.371],
+  "Sugar Hill": [34.107, -84.035], "Lawrenceville": [33.956, -83.988],
+  "Duluth": [34.003, -84.145], "Woodstock": [34.101, -84.519]
+};
+const knownAreaPins = new Map();
+const fallbackPinCounts = new Map();
+const venuePins = new Map();
+for (const venue of places) {
+  if (!Number.isFinite(venue.lat) || !Number.isFinite(venue.lng)) continue;
+  venuePins.set(venue.id, { lat: venue.lat, lng: venue.lng });
+  if (!knownAreaPins.has(venue.neighborhood)) knownAreaPins.set(venue.neighborhood, []);
+  knownAreaPins.get(venue.neighborhood).push(venue);
+}
+for (const venue of places) {
+  if (venuePins.has(venue.id) || venue.neighborhood === "Pop-up / rotating") continue;
+  const known = knownAreaPins.get(venue.neighborhood);
+  const center = areaCenters[venue.neighborhood] || (known && [
+    known.reduce((sum, place) => sum + place.lat, 0) / known.length,
+    known.reduce((sum, place) => sum + place.lng, 0) / known.length
+  ]);
+  if (!center) continue;
+  // Spread approximate pins around the area center so they can be selected.
+  const index = fallbackPinCounts.get(venue.neighborhood) || 0;
+  fallbackPinCounts.set(venue.neighborhood, index + 1);
+  const angle = index * 2.39996;
+  const offset = 0.00045 * Math.sqrt(index + 1);
+  venuePins.set(venue.id, {
+    lat: center[0] + offset * Math.sin(angle),
+    lng: center[1] + offset * Math.cos(angle) / Math.cos(center[0] * Math.PI / 180)
+  });
+}
+
+function fitVisiblePins() {
+  if (!map || !$("map").offsetWidth || !visiblePinPositions.length) return false;
+  const bounds = new google.maps.LatLngBounds();
+  for (const position of visiblePinPositions) bounds.extend(position);
+  if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
+    map.setCenter(bounds.getCenter());
+    map.setZoom(14);
+  } else {
+    map.fitBounds(bounds, 36);
+  }
+  return true;
+}
 let markers = [], view = "places";
 
 function showMapMessage(message) {
@@ -85,7 +138,7 @@ async function loadMap() {
     const response = await fetch("/api/maps-config");
     if (!response.ok) throw new Error("Map configuration unavailable");
     const { key, mapId } = await response.json();
-    if (!key || !mapId) throw new Error("Map configuration missing");
+    if (!key) throw new Error("Map configuration missing");
 
     await new Promise((resolve, reject) => {
       window.initAtlantaMap = resolve;
@@ -104,15 +157,16 @@ async function loadMap() {
       document.head.appendChild(script);
     });
 
-    const [{ Map, InfoWindow }, markerLibrary] = await Promise.all([
+    const [{ Map, InfoWindow }, availableMarkers] = await Promise.all([
       google.maps.importLibrary("maps"),
       google.maps.importLibrary("marker")
     ]);
-    AdvancedMarkerElement = markerLibrary.AdvancedMarkerElement;
+    markerLibrary = availableMarkers;
     map = new Map($("map"), {
       center: { lat: 33.793, lng: -84.372 },
       zoom: 11,
-      mapId,
+      ...(mapId ? { mapId } : {}),
+      maxZoom: 19,
       streetViewControl: false,
       mapTypeControl: false,
       fullscreenControl: false
@@ -120,6 +174,7 @@ async function loadMap() {
     infoWindow = new InfoWindow();
     showMapMessage("");
     render();
+    map.addListener("mapcapabilities_changed", render);
   } catch {
     showMapMessage("Google Maps is unavailable. Venue directions are still available.");
   }
@@ -161,27 +216,42 @@ let q=$("search").value.toLowerCase(),cat=$("category").value,hood=$("neighborho
 let arr=places.filter(p=>(view!=="favorites"||favs.has(p.id))&&(!cat||p.category===cat||p.types?.includes(cat))&&(!hood||p.neighborhood===hood)&&(!status||p.status===status)&&[p.name,p.category,p.neighborhood,p.note,p.address,...(p.types || [])].join(" ").toLowerCase().includes(q));
 arr.sort((a,b)=>String(a[$("sort").value]).localeCompare(String(b[$("sort").value])));
 $("total").textContent=places.length+" places";$("matchcount").textContent=arr.length+" matching venues";
-$("results").replaceChildren();infoWindow?.close(); markers.forEach(marker => { marker.map = null; }); markers = [];
+$("results").replaceChildren();infoWindow?.close(); markers.forEach(remove => remove()); markers = [];
+visiblePinPositions = [];
+const useAdvanced = map?.getMapCapabilities?.().isAdvancedMarkersAvailable && markerLibrary.AdvancedMarkerElement;
 arr.forEach(p=>{
 const d=document.createElement("div");d.className="venue";
 d.innerHTML='<h3>'+esc(p.name)+(p.status==="Upcoming"?'<span class="tag">Opening watch</span>':"")+'</h3><div class="meta">'+esc(p.category)+' · '+esc(p.neighborhood)+'</div>'+(p.address?'<div class="meta">'+esc(p.address)+'</div>':"")+(p.note?'<div class="notes">'+esc(p.note)+'</div>':"");
-if (map && Number.isFinite(p.lat) && Number.isFinite(p.lng)) {
-  const position = { lat: p.lat, lng: p.lng };
-  const dot = document.createElement("div");
-  dot.className = "dot";
-  dot.style.background = colors[p.category] || "#aaa";
-  const marker = new AdvancedMarkerElement({
-    map, position, title: p.name, gmpClickable: true,
-    anchorLeft: "-50%", anchorTop: "-50%"
-  });
-  marker.append(dot);
-  markers.push(marker);
+const position = venuePins.get(p.id);
+if (map && position) {
+  const color = colors[p.category] || "#aaa";
+  let marker;
+  if (useAdvanced) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.background = color;
+    marker = new markerLibrary.AdvancedMarkerElement({
+      map, position, title: p.name, gmpClickable: true,
+      anchorLeft: "-50%", anchorTop: "-50%"
+    });
+    marker.append(dot);
+    markers.push(() => { marker.map = null; });
+  } else {
+    marker = new markerLibrary.Marker({
+      map, position, title: p.name, optimized: false,
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 6, fillColor: color,
+        fillOpacity: 1, strokeColor: "#fff", strokeWeight: 1.5 }
+    });
+    markers.push(() => marker.setMap(null));
+  }
+  visiblePinPositions.push(position);
   const openPopup = () => {
-    infoWindow.setContent('<b>'+esc(p.name)+'</b><p>'+esc(p.category)+' · '+esc(p.neighborhood)+'</p><p>Approximate neighborhood pin</p><a target="_blank" rel="noopener" href="'+directionsUrl(p)+'">Find exact location / directions ↗</a>');
+    infoWindow.setContent('<b>'+esc(p.name)+'</b><p>'+esc(p.category)+' · '+esc(p.neighborhood)+'</p><p>Approximate area pin</p><a target="_blank" rel="noopener" href="'+directionsUrl(p)+'">Find exact location / directions ↗</a>');
     infoWindow.open({ map, anchor: marker });
   };
-  marker.addEventListener("gmp-click", openPopup);
-  d.onclick = () => { map.setCenter(position); map.setZoom(14); openPopup(); };
+  if (useAdvanced) marker.addEventListener("gmp-click", openPopup);
+  else marker.addListener("click", openPopup);
+  d.onclick = () => { map.setCenter(position); map.setZoom(16); openPopup(); };
 }
 const directions = document.createElement("a");
 directions.href = directionsUrl(p);
@@ -210,6 +280,8 @@ if (p.source) {
 }
 $("results").appendChild(d);
 });
+const filters = JSON.stringify([q, cat, hood, status]);
+if (filters !== fittedFilters && fitVisiblePins()) fittedFilters = filters;
 }
 const listings = [
   {
@@ -2369,6 +2441,7 @@ $("map-toggle").addEventListener("click", () => {
   $("map-toggle").setAttribute("aria-expanded", String(!panel.hidden));
   $("map-toggle").textContent = panel.hidden ? "Show map" : "Hide map";
   if (panel.hidden) infoWindow?.close();
+  else if (map) render();
 });
 render(); loadMap();
 </script></body></html>
