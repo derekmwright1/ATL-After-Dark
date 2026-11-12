@@ -51,8 +51,13 @@ if (location.hostname === "the-atlanta-scene.com") {
   <div id="night-planner" hidden>
     <div class="editorial-controls"><label>Plan your night<select id="plan-section">
       <option value="weekend">Weekend in Atlanta</option><option value="vibe">Find My Vibe</option>
-      <option value="itineraries">Make a Night of It</option><option value="recurring">Recurring Events</option>
+      <option value="pairings">Dinner &amp; Cocktails</option><option value="itineraries">Make a Night of It</option><option value="recurring">Recurring Events</option>
     </select></label><label id="vibe-control" hidden>Vibe<select id="plan-vibe"></select></label></div>
+    <div class="editorial-controls" id="pair-controls" hidden>
+      <label>Area<select id="pair-area"></select></label>
+      <label>Restaurant<select id="pair-restaurant"></select></label>
+      <label>Drinks<select id="pair-order"><option value="after">After dinner</option><option value="before">Before dinner</option></select></label>
+    </div>
     <section id="plan-content" aria-live="polite"></section>
   </div>
   <details id="opening-sources" hidden><summary>Sources we check</summary><ul><li><a href="https://www.rrealtacos.com/" target="_blank" rel="noopener noreferrer">Rreal Tacos - seasonal announcements</a></li><li><a href="https://atlanta.eater.com/maps/best-omakase-restaurants-atlanta" target="_blank" rel="noopener noreferrer">Eater Atlanta · Omakase guide</a></li><li><a href="https://www.atlantaeats.com/blog/the-ultimate-chamblee-dining-guide/" target="_blank" rel="noopener noreferrer">Atlanta Eats · Chamblee dining</a></li><li><a href="https://www.restaurantji.com/ga/chamblee/" target="_blank" rel="noopener noreferrer">Restaurantji · Chamblee dining</a></li><li><a href="https://restaurantobserver.com/restaurants-in-chamblee-ga/" target="_blank" rel="noopener noreferrer">Restaurant Observer · Chamblee dining</a></li><li><a href="https://www.atlantaeats.com/blog/our-alpharetta-restaurant-bucket-list/" target="_blank" rel="noopener noreferrer">Atlanta Eats · Alpharetta restaurant bucket list</a></li><li><a href="https://diningout.com/atlanta/the-best-restaurants-in-alpharetta-right-now/" target="_blank" rel="noopener noreferrer">DiningOut · Best restaurants in Alpharetta</a></li><li><a href="https://whatnow.com/atlanta/restaurants/" target="_blank" rel="noopener noreferrer">whatnow.com · restaurants</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/openings" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · openings</a></li><li><a href="https://hauteliving.com/2026/10/the-new-atlanta-every-restaurant-and-bar-opening-of-2026/796911/" target="_blank" rel="noopener noreferrer">hauteliving.com · 796911</a></li><li><a href="https://roughdraftatlanta.com/2026/09/01/24-restaurant-openings/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · 24-restaurant-openings</a></li><li><a href="https://roughdraftatlanta.com/2026/11/04/atlanta-restaurant-openings-october-2026/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · atlanta-restaurant-openings-october-2026</a></li><li><a href="https://atlanta.eater.com/openings/86653/highly-anticipated-restaurant-openings-atlanta-2026" target="_blank" rel="noopener noreferrer">atlanta.eater.com · highly-anticipated-restaurant-openings-atlanta-2026</a></li><li><a href="https://whatnow.com/atlanta/restaurants/4-upcoming-restaurant-openings-we-uncovered-across-metro-atlanta-last-week-nov-2-8/" target="_blank" rel="noopener noreferrer">whatnow.com · 4-upcoming-restaurant-openings-we-uncovered-across-metro-atlanta-</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/exciting-restaurant-openings-atlanta" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · exciting-restaurant-openings-atlanta</a></li><li><a href="https://www.ajc.com/food-and-dining/2026/11/restaurant-openings-closings-october-2026/" target="_blank" rel="noopener noreferrer">www.ajc.com · restaurant-openings-closings-october-2026</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/best-new-restaurants-atlanta-2026" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · best-new-restaurants-atlanta-2026</a></li><li><a href="https://roughdraftatlanta.com/2026/11/05/quick-bites-nov-5-atlanta-restaurant-news/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · quick-bites-nov-5-atlanta-restaurant-news</a></li><li><a href="https://whatnow.com/atlanta/restaurants/ladybird-grove-mess-hall-goes-west-beltline-favorite-opens-second-location-in-west-midtowns-star-metals-district/" target="_blank" rel="noopener noreferrer">whatnow.com · ladybird-grove-mess-hall-goes-west-beltline-favorite-opens-second</a></li><li><a href="https://resy.com/cities/atlanta-ga" target="_blank" rel="noopener noreferrer">resy.com · atlanta-ga</a></li><li><a href="https://www.opentable.com/r/brassica-atlanta" target="_blank" rel="noopener noreferrer">www.opentable.com · brassica-atlanta</a></li><li><a href="https://www.instagram.com/spices.and.spoons/" target="_blank" rel="noopener noreferrer">www.instagram.com · spices.and.spoons</a></li><li><a href="https://www.epicureanhotelatlanta.com/events/2026/a-perfectly-paired-friendsgiving-2026" target="_blank" rel="noopener noreferrer">www.epicureanhotelatlanta.com · a-perfectly-paired-friendsgiving-2026</a></li><li><a href="https://technobeatscloud.com/en/events/november-2026/united-states/atlanta" target="_blank" rel="noopener noreferrer">technobeatscloud.com · atlanta</a></li><li><a href="https://districtatlanta.com/events/index/" target="_blank" rel="noopener noreferrer">districtatlanta.com · index</a></li><li><a href="https://discoveratlanta.com/stories/things-to-do/best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun/" target="_blank" rel="noopener noreferrer">discoveratlanta.com · best-christmas-pop-up-bars-in-atlanta-for-festive-holiday-fun</a></li><li><a href="https://atlantabg.org/calendar/garden-lights-holiday-nights/" target="_blank" rel="noopener noreferrer">atlantabg.org · garden-lights-holiday-nights</a></li><li><a href="https://liveatthebatteryatlanta.com/eat-and-drink/tinsel-tavern" target="_blank" rel="noopener noreferrer">liveatthebatteryatlanta.com · tinsel-tavern</a></li><li><a href="https://www.eventbrite.com/e/block-drum-x-party-pupils-2-year-anniversary-yacht-house-tickets-2002489446841" target="_blank" rel="noopener noreferrer">www.eventbrite.com · block-drum-x-party-pupils-2-year-anniversary-yacht-house-tickets-</a></li><li><a href="https://www.comingsoonproject.com/project/exclusive-restaurant-atlanta-29fa63/?f=hGUnacTky8jW5qpm" target="_blank" rel="noopener noreferrer">www.comingsoonproject.com · ?f=hGUnacTky8jW5qpm</a></li><li><a href="https://roughdraftatlanta.com/2026/11/05/restaurant-openings-galore/" target="_blank" rel="noopener noreferrer">roughdraftatlanta.com · restaurant-openings-galore</a></li><li><a href="https://roamrecs.com/guide/best-christmas-bars-holiday-pop-ups-atlanta" target="_blank" rel="noopener noreferrer">roamrecs.com · best-christmas-bars-holiday-pop-ups-atlanta</a></li><li><a href="https://www.amoreeamore.com/experiences" target="_blank" rel="noopener noreferrer">www.amoreeamore.com · experiences</a></li><li><a href="https://www.hobnobatlanta.com/happenings" target="_blank" rel="noopener noreferrer">www.hobnobatlanta.com · happenings</a></li><li><a href="https://www.epicureanhotelatlanta.com/events/2026/a-perfectly-paired-friendsgiving-2026/" target="_blank" rel="noopener noreferrer">www.epicureanhotelatlanta.com · a-perfectly-paired-friendsgiving-2026</a></li><li><a href="https://www.theinfatuation.com/atlanta/guides/best-holiday-bars-atlanta" target="_blank" rel="noopener noreferrer">www.theinfatuation.com · best-holiday-bars-atlanta</a></li><li><a href="https://atlanta.eater.com/dining-report/87146/spoon-eastside-review-stranger-things-priah-ferguson" target="_blank" rel="noopener noreferrer">atlanta.eater.com · spoon-eastside-review-stranger-things-priah-ferguson</a></li></ul></details>
@@ -2112,8 +2117,84 @@ function weekendWindow() {
   return {first:first.toISOString().slice(0,10), last:last.toISOString().slice(0,10),
     today:today.toISOString().slice(0,10), label:label.formatRange(first,last)};
 }
+const cocktailPicks = new Set([
+  "May Peel", "MidCity", "Bar Margot at Four Seasons", "The Office Bar",
+  "Read the Room", "Moonlight", "12 Cocktail Bar", "Ranger Station", "La Cueva",
+  "Bar ANA", "The James Room", "Stereo", "Dad’s", "The St. Regis Bar", "Himitsu",
+  "Gypsy Kitchen", "The Garden Room", "Azzurra Buckhead", "KR SteakBar", "Luella",
+  "Truth Be Told", "The Gaslight", "Pop Alleigh", "1920 Tavern", "The Select",
+  "Casi Cielo", "C&S Seafood & Oyster Bar", "The Ashford", "The Hampton Social",
+  "Carrie’s Conservatory", "Barleygarden Kitchen & Craft Bar", "Antiguo Lobo",
+  "Fudo", "Burtons Grill & Bar", "El Valle Kitchen & Bar (Midtown)", "Canton St. Social",
+  "The Harvey", "New Realm Brewing"
+]);
+const nearbyAreas = {
+  "Old Fourth Ward": ["Inman Park", "Poncey-Highland", "Midtown"],
+  "Inman Park": ["Old Fourth Ward", "Poncey-Highland", "Cabbagetown"],
+  "Poncey-Highland": ["Old Fourth Ward", "Inman Park", "Virginia-Highland"],
+  "Virginia-Highland": ["Poncey-Highland", "Midtown"],
+  "Cabbagetown": ["Inman Park", "Old Fourth Ward"],
+  "Midtown": ["Old Fourth Ward", "Virginia-Highland", "West Midtown"],
+  "West Midtown": ["Midtown"],
+  "Buckhead": ["Brookhaven"], "Brookhaven": ["Buckhead", "Chamblee"],
+  "Chamblee": ["Brookhaven", "Dunwoody"],
+  "Dunwoody": ["Sandy Springs", "Chamblee"], "Sandy Springs": ["Dunwoody"],
+  "Roswell": ["Alpharetta"], "Alpharetta": ["Roswell"]
+};
+const dinnerPlaces = places.filter(place => place.status === "Saved" &&
+  !["Bars / Lounges", "Breweries", "Wine Bars", "Coffee / Pop-ups", "Tea Rooms", "Dessert", "Drinks"].includes(place.category));
+const pairingAreas = [...new Set(dinnerPlaces.map(place => place.neighborhood))].sort();
+function setPairRestaurants() {
+  const area = $("pair-area").value;
+  const options = dinnerPlaces.filter(place => place.neighborhood === area)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(place => new Option(place.name, place.id));
+  $("pair-restaurant").replaceChildren(new Option("Choose a restaurant", ""), ...options);
+  $("pair-restaurant").disabled = !area;
+}
+function pairingDirections(origin, destination, mode) {
+  const query = place => [place.name, place.address, place.neighborhood, "Georgia"].filter(Boolean).join(", ");
+  return "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(query(origin)) +
+    "&destination=" + encodeURIComponent(query(destination)) + "&travelmode=" + mode;
+}
+function renderPairings() {
+  const dinner = dinnerPlaces.find(place => String(place.id) === $("pair-restaurant").value);
+  const content = $("plan-content");
+  if (!dinner) {
+    content.innerHTML = "<h3>Dinner &amp; Cocktails</h3><p class=\"muted\">Choose an area and a restaurant to see cocktail spots.</p>";
+    return;
+  }
+  const area = dinner.neighborhood;
+  const nearby = nearbyAreas[area] || [];
+  const bars = places.filter(place => place.id !== dinner.id && place.status === "Saved" && cocktailPicks.has(place.name));
+  const before = $("pair-order").value === "before";
+  function cards(matches) {
+    return matches.map(bar => {
+      const [origin, destination] = before ? [bar, dinner] : [dinner, bar];
+      return '<article class="editorial-card"><h4>' + esc(bar.name) + '</h4><small>' +
+        esc([bar.neighborhood, bar.address].filter(Boolean).join(" · ")) + '</small><p>' +
+        '<a target="_blank" rel="noopener noreferrer" href="' + esc(pairingDirections(origin, destination, "walking")) +
+        '">Walking directions ↗</a><br><a target="_blank" rel="noopener noreferrer" href="' +
+        esc(pairingDirections(origin, destination, "driving")) + '">Driving directions ↗</a></p></article>';
+    }).join("");
+  }
+  const local = cards(bars.filter(bar => bar.neighborhood === area));
+  const close = cards(bars.filter(bar => nearby.includes(bar.neighborhood)));
+  content.innerHTML = '<h3>Cocktails ' + (before ? 'before' : 'after') + ' ' + esc(dinner.name) + '</h3>' +
+    '<p class="muted">Open a route to check the current walk or drive time.</p>' +
+    (local ? '<h4>In ' + esc(area) + '</h4><div class="editorial-grid">' + local + '</div>' : '') +
+    (close ? '<h4>Nearby areas</h4><div class="editorial-grid">' + close + '</div>' : '') +
+    (!local && !close ? '<p>No cocktail pairings are listed for this area yet.</p>' : '');
+}
+filterOptions("pair-area", "Choose an area", pairingAreas);
+setPairRestaurants();
+$("pair-area").addEventListener("change", () => { setPairRestaurants(); renderPairings(); });
+$("pair-restaurant").addEventListener("change", renderPairings);
+$("pair-order").addEventListener("change", renderPairings);
 function renderPlanner() {
   const selected = $("plan-section").value;
+  $("pair-controls").hidden = selected !== "pairings";
+  if (selected === "pairings") { $("vibe-control").hidden = true; renderPairings(); return; }
   $("vibe-control").hidden = selected !== "vibe";
   const output = $("plan-content");
   let title, cards;
