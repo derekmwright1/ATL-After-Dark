@@ -324,6 +324,137 @@ const filters = JSON.stringify([q, cat, hood, status]);
 if (filters !== fittedFilters && fitVisiblePins()) fittedFilters = filters;
 }
 const listings = [
+{
+  "section": "events",
+  "title": "IllumiNights at Zoo Atlanta",
+  "area": "Grant Park",
+  "date": "Nov 21, 2026–Jan 17, 2027",
+  "start": "2026-11-21",
+  "expires": "2027-01-17",
+  "tags": [
+    "Holiday",
+    "Events"
+  ],
+  "description": "Lantern displays after dark at Zoo Atlanta. Check the zoo’s schedule for tickets and available nights.",
+  "source": "Zoo Atlanta",
+  "url": "https://zooatlanta.org/press-release/tickets-are-now-on-sale-for-illuminights-at-the-zoo-presented-by-georgia-power-3/"
+},
+{
+  "section": "events",
+  "title": "Light Up the Season at Piedmont Park",
+  "area": "Midtown",
+  "date": "Nov 22, 2026–Jan 4, 2027",
+  "start": "2026-11-22",
+  "expires": "2027-01-04",
+  "tags": [
+    "Holiday",
+    "Events"
+  ],
+  "description": "Seasonal lights at Piedmont Park, with a lantern parade and lighting ceremony on opening night.",
+  "source": "Piedmont Park Conservancy",
+  "url": "https://piedmontpark.org/light-up-the-season/"
+},
+{
+  "section": "events",
+  "title": "Elf in Concert",
+  "area": "Midtown",
+  "date": "Nov 28–29, 2026",
+  "start": "2026-11-28",
+  "expires": "2026-11-29",
+  "tags": [
+    "Holiday",
+    "Music"
+  ],
+  "description": "Watch Elf at Symphony Hall with the Atlanta Symphony Orchestra performing the score live.",
+  "source": "Atlanta Symphony Orchestra",
+  "url": "https://www.aso.org/ConcertsAndTickets/Holidays"
+},
+{
+  "section": "events",
+  "title": "Atlanta Ballet’s The Nutcracker",
+  "area": "Cumberland",
+  "date": "Dec 5–26, 2026",
+  "start": "2026-12-05",
+  "expires": "2026-12-26",
+  "tags": [
+    "Holiday",
+    "Events",
+    "Date nights"
+  ],
+  "description": "Atlanta Ballet performs at Cobb Energy Performing Arts Centre. Check the performance calendar for showtimes.",
+  "source": "Atlanta Ballet",
+  "url": "https://www.atlantaballet.com/performances/nutcracker"
+},
+{
+  "section": "events",
+  "title": "Wednesday Jazz Jam",
+  "area": "Virginia-Highland",
+  "date": "Wednesdays",
+  "start": "9999-12-31",
+  "tags": [
+    "Recurring",
+    "Music"
+  ],
+  "description": "The Gordon Vernick Quartet hosts a jazz jam at Red Light Café. Check the calendar for doors and any schedule changes.",
+  "source": "Red Light Café",
+  "url": "https://redlightcafe.com/events"
+},
+{
+  "section": "events",
+  "title": "Atlanta Songwriters Club Meetup",
+  "area": "Virginia-Highland",
+  "date": "Second Monday of each month",
+  "start": "9999-12-31",
+  "tags": [
+    "Recurring",
+    "Music"
+  ],
+  "description": "A monthly songwriter meetup at Red Light Café. Check the venue calendar for the next session.",
+  "source": "Red Light Café",
+  "url": "https://redlightcafe.com/events"
+},
+{
+  "section": "events",
+  "title": "Sunday Blues at Northside Tavern",
+  "area": "West Midtown",
+  "date": "Sundays",
+  "start": "9999-12-31",
+  "tags": [
+    "Recurring",
+    "Music"
+  ],
+  "description": "Sunday-night live blues at Northside Tavern. Check the venue’s music schedule for the lineup.",
+  "source": "Northside Tavern",
+  "url": "https://www.northsidetavern.com/weeknight-music---sunday.html"
+},
+{
+  "section": "events",
+  "title": "Freedom Farmers Market",
+  "area": "Poncey-Highland",
+  "date": "Saturdays, 8:30 a.m.–noon",
+  "start": "9999-12-31",
+  "tags": [
+    "Recurring",
+    "Markets"
+  ],
+  "description": "Shop Georgia-grown produce and local food at the Carter Center.",
+  "source": "Freedom Farmers Market",
+  "url": "https://freedomfarmersmkt.com/"
+},
+{
+  "section": "events",
+  "title": "Grant Park Farmers Market",
+  "area": "Grant Park",
+  "date": "Sundays, 9 a.m.–1 p.m.",
+  "start": "9999-12-31",
+  "tags": [
+    "Recurring",
+    "Markets"
+  ],
+  "description": "A weekly market at The Beacon ATL. Check the organizer’s calendar for holiday changes.",
+  "source": "Community Farmers Markets",
+  "url": "https://cfmatl.org/grantpark/"
+},
   {
     "section": "events",
     "title": "Bar Noël at Bar Blanc",
@@ -2249,7 +2380,7 @@ const editorialSections = {
   events: {
     title: "What's Happening",
     intro: "Find Atlanta holiday pop-ups, live music and ideas for a night out. Use the venue and organizer links for tickets and hours.",
-    groups: ["Holiday spotlight", "More nights out", "Holiday dates pending"],
+    groups: ["Holiday spotlight", "More nights out", "Recurring events", "Holiday dates pending"],
     filters: ["Holiday", "Events", "Music", "Pop-ups", "Date nights", "Dates pending"]
   },
   openings: {
@@ -2289,6 +2420,7 @@ function renderEditorial() {
   const groups = section.groups.map(group => {
     const items = results.filter(item => {
       if (view === "openings") return item.tags.includes(group);
+      if (item.tags.includes("Recurring")) return group === "Recurring events";
       if (item.tags.includes("Dates pending")) return group === "Holiday dates pending";
       return group === (item.tags.includes("Holiday") ? "Holiday spotlight" : "More nights out");
     });
