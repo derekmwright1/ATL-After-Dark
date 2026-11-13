@@ -38,16 +38,11 @@ body>header,.site-nav{background:#1d1214}
 .atl-landing h2{font:400 clamp(62px,10vw,132px)/.85 'Instrument Serif',Georgia,serif;letter-spacing:-.035em;margin:0 0 24px}
 .atl-landing em{color:var(--gold)}
 .atl-landing p{font-size:17px;color:var(--muted);margin:0 0 22px}
-.atl-landing button{background:var(--gold);color:#211213;border-color:var(--gold);font-weight:700;padding:11px 18px}
+.atl-landing #browse-venues{display:inline-block;border-radius:12px;text-decoration:none;background:var(--gold);color:#211213;border-color:var(--gold);font-weight:700;padding:11px 18px}
 .atl-velvet{display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 55% 43%,#b96038,#5f2420 33%,#251217 65%,#160d12 91%);position:relative;isolation:isolate}
 .atl-velvet::before{content:'';position:absolute;z-index:-1;inset:-35% 1%;transform:rotate(-17deg);background:repeating-linear-gradient(90deg,transparent 0 22px,#2d0d1175 32px,#ef9e6444 46px,transparent 56px);mask-image:radial-gradient(ellipse,black,transparent 72%)}
 .atl-velvet span{color:#ffd2b0;font:italic clamp(78px,16vw,196px)/1 'Instrument Serif',Georgia,serif;text-shadow:0 0 50px #f08c54}
-.night-moves{background:radial-gradient(ellipse at 82% 12%,#412554,transparent 65%),#191425;border-bottom:1px solid #524062;padding:22px clamp(16px,4vw,54px)}
-.night-moves h2{font-size:clamp(25px,4vw,42px);letter-spacing:-.05em;margin:0 0 12px;color:#fff0ff}
-.night-neighborhoods{display:flex;gap:8px;flex-wrap:wrap}
-.night-neighborhoods button{background:#231a32;border:1px solid #745982;color:#f8d6f1;padding:8px 13px}
-.night-neighborhoods button[aria-pressed="true"]{color:#241128;background:#f4a2ea;border-color:#f4a2ea}
-@media(max-width:600px){.atl-landing{grid-template-columns:1fr}.atl-velvet{min-height:150px}.night-neighborhoods button{min-height:44px}}
+@media(max-width:600px){.atl-landing{grid-template-columns:1fr}.atl-velvet{min-height:150px}}
 </style><script>
 if (location.hostname === "the-atlanta-scene.com") {
   window.dataLayer = window.dataLayer || [];
@@ -65,20 +60,10 @@ if (location.hostname === "the-atlanta-scene.com") {
 <section id="atl-landing" class="atl-landing" aria-labelledby="atl-landing-title">
   <div class="atl-landing-copy">
     <h2 id="atl-landing-title">Dinner.<br><em>Then drinks.</em></h2>
-    <p>Find the table and the nightcap.</p>
-    <button id="browse-venues" type="button">Explore venues ↓</button>
+    <p>Decide on the area. Select the Reservation. Pick your drinks before or after.</p>
+    <a id="browse-venues" href="#pair-controls">Explore venues ↓</a>
   </div>
   <div class="atl-velvet" aria-hidden="true"><span>ATL</span></div>
-</section>
-<section id="night-moves" class="night-moves" aria-labelledby="night-moves-title">
-  <h2 id="night-moves-title">Explore by neighborhood</h2>
-  <div class="night-neighborhoods">
-    <button type="button" data-area="" aria-pressed="true">All neighborhoods</button>
-    <button type="button" data-area="Midtown" aria-pressed="false">Midtown</button>
-    <button type="button" data-area="Old Fourth Ward" aria-pressed="false">Old Fourth Ward</button>
-    <button type="button" data-area="Decatur" aria-pressed="false">Decatur</button>
-    <button type="button" data-area="West Midtown" aria-pressed="false">West Midtown</button>
-  </div>
 </section>
 <div class="layout" id="directory"><aside><div class="filters"><input id="search" placeholder="Search restaurant, bar, neighborhood…"><div class="pair"><select id="category"><option value="">All cuisines & types</option></select><select id="neighborhood"><option value="">All neighborhoods</option></select></div><div class="pair"><select id="status"><option value="">All opening statuses</option><option>Saved</option><option>Open</option><option>Upcoming</option><option>Coming soon</option><option>Delayed</option><option>Unconfirmed</option><option>Temporarily closed</option><option>Closed</option><option>Status unverified</option></select><select id="sort"><option value="name">Sort A–Z</option><option value="neighborhood">Sort by neighborhood</option></select></div><div class="map-controls"><small id="matchcount"></small><button id="map-toggle" type="button" aria-controls="map-panel" aria-expanded="true">Hide map</button></div></div><div class="results" id="results"></div></aside><div class="mapwrap" id="map-panel"><div id="map"></div><p id="map-status" role="status" hidden></p><div class="mapinfo">Pins show <b>approximate areas</b>. Use Directions for street addresses. Listings without a known location may appear only in the list.</div></div></div>
 <main class="editorial" id="editorial" hidden>
@@ -2445,7 +2430,6 @@ document.querySelectorAll(".site-nav button").forEach(button => {
     const section = editorialSections[view];
     $("directory").hidden = Boolean(section);
     $("atl-landing").hidden = view !== "places";
-    $("night-moves").hidden = view !== "places";
     $("editorial").hidden = !section;
     $("opening-sources").hidden = view !== "openings" && view !== "news";
     if (!section) {
@@ -2642,24 +2626,10 @@ $("map-toggle").addEventListener("click", () => {
   if (panel.hidden) infoWindow?.close();
   else if (map) render();
 });
-const neighborhoodShortcuts = $("night-moves").querySelectorAll("button[data-area]");
-function syncNeighborhoodShortcuts() {
-  const selected = $("neighborhood").value;
-  for (const shortcut of neighborhoodShortcuts) {
-    shortcut.setAttribute("aria-pressed", String(shortcut.dataset.area === selected));
-  }
-}
-$("neighborhood").addEventListener("input", syncNeighborhoodShortcuts);
-for (const shortcut of neighborhoodShortcuts) {
-  shortcut.addEventListener("click", () => {
-    $("neighborhood").value = shortcut.dataset.area;
-    $("neighborhood").dispatchEvent(new Event("input", { bubbles: true }));
-  });
-}
 $("browse-venues").addEventListener("click", () => {
-  $("night-moves").scrollIntoView({ block: "start" });
-  neighborhoodShortcuts[0].focus({ preventScroll: true });
+  $("plan-section").value = "pairings";
+  document.querySelector('.site-nav button[data-view="plan"]').click();
+  $("pair-area").focus({ preventScroll: true });
 });
-syncNeighborhoodShortcuts();
 render(); loadMap();
 </script></body></html>
